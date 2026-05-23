@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="VesselSim: learning 3D blood vessel segmentation without expert annotations">
+  <meta name="keywords" content="Vascular segmentation,synthetic data, test-time training">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VesselSim</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <h1 class="title is-1 publication-title">VesselSim: learning 3D blood vessel segmentation
+without expert annotations</h1>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/erin-rainville-01a41a306">Erin Rainville</a><sup>1</sup>,
+              <a href="https://www.linkedin.com/in/melissa-ananian-443a4b165">Melissa Ananian</a><sup>1</sup>,
+              <a href="https://www.linkedin.com/in/tristan-mirolla-2a698522a">Tristan Mirolla</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://users.encs.concordia.ca/~hrivaz/">Hassan Rivaz</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://yimingxiao.weebly.com/curriculum-vitae.html">Yiming Xiao </a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>1</sup>Department of Computer Science and Software Engineering, Concordia University, Montreal, Canada,</span>
+            <span class="author-block"><sup>2</sup>Department of Electrical and Computer Engineering, Concordia University, Montreal, Canada</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+
+                  <span class="link-block">
+                  <a href="https://conferences.miccai.org/2026/en/default.asp" target="_blank">
+                    <img src="./static/images/MICCAI2026-logo.png" alt="GitHub Link" width="500">
+                </a>
+                  </span>
+
+<!--              <span class="link-block">-->
+<!--                <a href="[PAPER PDF LINK]" class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon"><i class="fas fa-file-pdf"></i></span>-->
+<!--                  <span>Paper</span>-->
+<!--                </a>-->
+<!--              </span>-->
+
+<!--              <span class="link-block">-->
+<!--                <a href="[ARXIV LINK]" class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon"><i class="ai ai-arxiv"></i></span>-->
+<!--                  <span>arXiv</span>-->
+<!--                </a>-->
+<!--              </span>-->
+
+<!--              <span class="link-block">-->
+<!--                <a href="[CODE LINK]" class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon"><i class="fab fa-github"></i></span>-->
+<!--                  <span>Code</span>-->
+<!--                </a>-->
+<!--              </span>-->
+
+<!--              <span class="link-block">-->
+<!--                <a href="[DATA LINK]" class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon"><i class="far fa-images"></i></span>-->
+<!--                  <span>Data</span>-->
+<!--                </a>-->
+<!--              </span>-->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop has-text-centered">
+    <div class="hero-body">
+
+      <!-- Use either an image or a video teaser. Delete the one you do not need. -->
+
+      <img src="./static/images/dataCompare.png" alt="Project teaser figure">
+
+      <!--
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4" type="video/mp4">
+      </video>
+      -->
+
+      <h2 class="subtitle has-text-centered">
+        VesselSim enables zero-shot blood vessel segmentation across modalities and organs without any real training images. The full generated data is available for use.
+      </h2>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Blood vessel segmentation is a core task in medical image analysis for the care of vascular diseases and
+            surgical planning, yet the challenges of providing expert vascular annotations pose a major obstacle for the
+            progress of related deep learning techniques. To address this, we propose <kbd>VesselSim</kbd>, a two-stage
+            framework for universal 3D blood vessel segmentation that eliminates the need for real annotated data during
+            training. First, we introduce a stochastic, geometry-driven vascular simulation framework that models
+            recursive branching, curvature-controlled growth, and collision-aware topology, followed by
+            domain-randomized intensity synthesis to generate 16,500 anatomically plausible 3D angiographic volumes.
+            Second, a 3D U-Net is trained solely on this synthetic data. To bridge the domain gap from synthetic to
+            real images at inference time, we introduce a test-time adaptation strategy via a self-supervised mask
+            reconstruction decoder, enabling adaptation to unseen clinical scans without prior domain knowledge.
+            We evaluate <kbd>VesselSim</kbd> in a zero-shot setting on multiple real-world datasets spanning MR and CT
+            across several anatomical regions, including the brain and kidneys. Despite being trained exclusively on
+            synthetic data, <kbd>VesselSim</kbd> achieves performance competitive with state-of-the-art vascular
+            segmentation foundation models. These findings suggest that learning vessel geometry from synthetic tubular
+            structures is effective for robust cross-domain generalization, substantially reducing the reliance on
+            acquired medical imaging data and more importantly, expert annotations.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method Overview</h2>
+
+        <div class="content has-text-justified">
+          <ul>
+            <li>
+              <b>Synthetic Vascular Training Data:</b>
+              A stochastic vessel generation framework produces diverse 3D vascular networks and domain-randomized angiographic images without requiring real annotated data.
+            </li>
+
+            <li>
+              <b>3D U-Net Vessel Segmentation:</b>
+              A 3D U-Net is trained entirely on synthetic vascular volumes using Dice, Cross-Entropy, and centerline-aware losses to preserve thin vessel structures and connectivity.
+            </li>
+
+
+            <li>
+              <b>Self-Supervised Reconstruction Branch:</b>
+              A masked in-painting decoder reconstructs randomly corrupted image regions, providing auxiliary self-supervision and improving domain robustness.
+            </li>
+
+            <li>
+              <b>Test-Time Adaptation (TTA):</b>
+              During inference, reconstruction-based self-supervision adapts encoder normalization parameters to unseen clinical scans without requiring annotations.
+            </li>
+
+            <li>
+              <b>Cross-Modality Generalization:</b>
+              The framework is evaluated in a zero-shot setting across CTA, MRA, and HiP-CT datasets spanning different anatomies and imaging domains.
+            </li>
+          </ul>
+        </div>
+
+        <div class="content has-text-centered">
+          <img src="./static/images/method.png" alt="Method overview figure" width="90%">
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+
+        <div class="content has-text-justified">
+
+          <p>
+            We evaluate on two publicly available medical image repositories,
+            <a href="https://kaggle.com/competitions/blood-vessel-segmentation">HiP-CT</a> and
+            <a href="https://topcow24.grand-challenge.org/data/">TopCoW</a>. <i>HiP-CT</i> consists of three
+            ultra–high-resolution 3D human kidney volumes acquired using Hierarchical Phase-Contrast Tomography.
+            <i>TopCoW</i> includes 125 computed tomography angiographies (CTA) and 125 magnetic resonance angiographies
+            (MRA) of the human brain. For <i>TopCow CTA</i>, manual annotations are provided for the Circle
+            of Willis. Volumes are cropped to the bounding box of this region to avoid penalizing predictions outside
+            the territory. For <i>TopCoW MRA</i> , we use the <a href="https://i-vesseg.github.io/vesselverse/">VesselVerse</a>
+            extension, which expands the vessel annotations to the full brain. Thus allowing us to assess robustness
+            across organ systems (kidney, Circle of Willis, full brain) and across imaging contrasts (HiP-CT, CTA and MRA).
+          </p>
+          <p>
+            Comparison of segmentation performance across datasets.
+            <b>VesselSim</b> denotes our final model with
+            <i>CE + Dice + cbDice + Reconstruction TTA</i>.
+            Best results are shown in <b>bold</b>,
+            second best results are <u>underlined</u>.
+          </p>
+        </div>
+
+
+      <div style="overflow-x:auto;">
+
+        <table class="table is-striped is-hoverable is-fullwidth">
+
+          <thead>
+            <tr>
+              <th rowspan="2">Model</th>
+              <th colspan="2">TopCoW CTA</th>
+              <th colspan="2">TopCoW MRA</th>
+              <th colspan="2">HiP-CT</th>
+            </tr>
+
+            <tr>
+              <th>Dice</th>
+              <th>clDice</th>
+              <th>Dice</th>
+              <th>clDice</th>
+              <th>Dice</th>
+              <th>clDice</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr class="table-section">
+              <td colspan="7"><b>Foundation Model Baselines</b></td>
+            </tr>
+
+            <tr>
+              <td>VesselFM</td>
+              <td><b>52.9±9.5</b></td>
+              <td>58.9±10.2</td>
+              <td>48.3±8.1</td>
+              <td>46.9±9.1</td>
+              <td><u>35.1±24.5</u></td>
+              <td>25.6±19.5</td>
+            </tr>
+
+            <tr>
+              <td>SAM-Med3D</td>
+              <td>6.6±4.4</td>
+              <td>9.1±6.0</td>
+              <td>3.1±2.6</td>
+              <td>2.6±2.2</td>
+              <td>8.0±21.6</td>
+              <td>3.1±8.9</td>
+            </tr>
+
+            <tr>
+              <td>UniverSeg</td>
+              <td>19.7±8.6</td>
+              <td>29.4±12.3</td>
+              <td>48.2±5.1</td>
+              <td>47.0±6.1</td>
+              <td>4.7±21.1</td>
+              <td>0.0±0.0</td>
+            </tr>
+
+            <tr class="table-section">
+              <td colspan="7"><b>Ablation Studies</b></td>
+            </tr>
+
+            <tr>
+              <td>Base UNet</td>
+              <td>42.7±12.2</td>
+              <td>60.6±12.7</td>
+              <td>70.1±3.9</td>
+              <td>73.1±5.1</td>
+              <td>34.3±23.0</td>
+              <td>23.0±42.7</td>
+            </tr>
+
+            <tr>
+              <td>+ cbDice</td>
+              <td>46.8±12.9</td>
+              <td><u>62.9±13.6</u></td>
+              <td><b>72.6±3.5</b></td>
+              <td><u>75.7±4.4</u></td>
+              <td>31.1±23.7</td>
+              <td>41.2±25.1</td>
+            </tr>
+
+            <tr>
+              <td>+ recon</td>
+              <td>43.1±14.1</td>
+              <td>60.6±13.3</td>
+              <td><u>71.9±3.9</u></td>
+              <td>74.6±5.2</td>
+              <td><b>36.0±22.7</b></td>
+              <td><u>41.3±23.1</u></td>
+            </tr>
+
+            <tr style="background-color:#f5e1ff;">
+              <td><b>VesselSim</b></td>
+              <td><u>48.7±11.9</u></td>
+              <td><b>64.0±13.0</b></td>
+              <td>71.8±3.3</td>
+              <td><b>76.2±4.1</b></td>
+              <td>31.6±21.5</td>
+              <td><b>42.3±23.8</b></td>
+            </tr>
+
+            <tr style="background-color:#fffacd;">
+              <td>+ finetuned</td>
+              <td>59.5±7.7</td>
+              <td>70.4±7.3</td>
+              <td>77.3±3.3</td>
+              <td>83.2±3.6</td>
+              <td>46.8±33.2</td>
+              <td>50.7±27.8</td>
+            </tr>
+
+          </tbody>
+
+        </table>
+      </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+      <h2 class="title is-3">Segmentation Visualization</h2>
+          <div class="content has-text-justified">
+          <p>
+            Maximum intensity projections of the input scan and different model predictions.
+            From top to bottom: HiP-CT, TopCoW CTA, TopCoW MRA. For the predictions,
+            true positives are shown in blue, false positives in red,
+            and false negatives in green. SAM-Med3D visualizations are omitted due to consistently low segmentation
+            performance across datasets.
+          </p>
+        </div>
+         <div class="content has-text-centered">
+          <img src="./static/images/results.png" alt="Results figure" width="90%">
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{rainville2026vesselsim,
+  author  = {Rainville, Erin and Ananian, Melissa and Mirolla, Tristan and Rivaz, Hassan, and Xiao, Yiming},
+  title   = {VesselSim: learning 3D blood vessel segmentation without expert annotations},
+  journal = {MICCAI},
+  year    = {2026},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website template adapted from
+            <a href="https://nerfies.github.io/">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
