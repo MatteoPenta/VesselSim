@@ -1,6 +1,8 @@
 
 ![VesselSim Banner](static/images/banner.png)
+
 **TL;DR** *This project page provides the code to generate VesselSim's high tortuosity synthetic blood vessels.* 
+
 ---
 **VesselSim** is  a two-stage framework for universal 3D blood vessel segmentation that eliminates the need for 
 real annotated data during training. First, we introduce a stochastic, geometry-driven vascular simulation framework that
@@ -27,8 +29,8 @@ skull-injected samples.
 
 1. The low-tortuosity vessel samples are generated using the [VascuSynth](https://vascusynth.cs.sfu.ca/) vascular simulation 
 framework for straighter, tree-like structures. Please refer to their software and instructions to generate these samples.
-2. The high tortuosity vessel sample instructions and code are available [here](.\VesselSim\HighTortuosity).
-3. The background samples are 96x96x96-voxel empty .npy volumes, one sample volume is available [here](.\VesselSim\Background).
+2. The high tortuosity vessel sample instructions and code are available [here](VesselSim/HighTortuosity/README.md).
+3. The background samples are 96x96x96-voxel empty .npy volumes, one sample volume is available [here](VesselSim/BackgroundSample/README.md).
 4. The skull-injected samples are any of the three other vessel volumes augmented with ellipsoidal shell structures designed to simulate 
 skull or bone anatomy in angiographic imaging. _(code to be added)_.
 
