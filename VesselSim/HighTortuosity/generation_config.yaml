@@ -1,0 +1,11 @@
+parameters_dir: "vessel_parameters" # directory of created parameter files
+builder_output_dir: "tmp" # directory of the initial masks generated from 2_vessel_builder.py
+final_patches_dir: "final_vessels" # directory of the final masks generated from 3_extract_patches.py
+
+initial_volume_size: [160, 160, 160]
+masks_per_json: 3 #TODO
+
+final_patch_size: 96
+patch_extraction_attempts: 50
+
+

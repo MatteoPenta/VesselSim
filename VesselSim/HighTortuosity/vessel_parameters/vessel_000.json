@@ -1,0 +1,49 @@
+{
+  "anatomical_context": "Cerebral artery tree within a 160^3 voxel volume: moderately dense branching with higher tortuosity, aiming for Circle-of-Willis-like curvature and short-to-medium segments while keeping radii within plausible intracranial ranges.",
+  "root_geometry": {
+    "origin_voxel": [
+      78,
+      82,
+      54
+    ],
+    "initial_direction": [
+      0.62,
+      0.18,
+      0.76
+    ],
+    "initial_radius": 3.2
+  },
+  "branching_model": {
+    "max_depth": 9,
+    "bifurcation_probability": 0.78,
+    "bifurcation_depth_decay": 0.88,
+    "bifurcation_angle": 26.0,
+    "termination_factor": 0.26,
+    "segment_length_vox": {
+      "min": 10,
+      "max": 22
+    },
+    "max_total_segments": 26
+  },
+  "radius_model": {
+    "min_radius_vox": 0.9,
+    "radius_decay_factor": 0.82
+  },
+  "tortuosity_model": {
+    "segment_max_curvature": 6.5,
+    "collision_jitter_scale": 0.55
+  },
+  "generation_stats": {
+    "total_segments": 26,
+    "sum_successful_length": 411.0,
+    "avg_successful_length": 15.807692307692308,
+    "successful_bifurcations": 12,
+    "longest_depth": 5,
+    "avg_depth_successful_segments": 3.0384615384615383,
+    "end_due_to_max_depth": 0,
+    "end_due_to_min_radius": 0,
+    "end_due_to_collision": 0,
+    "end_due_to_termination_prob": 8,
+    "voxel_coverage_percent": 0.10808105468749998
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "anatomical_context": "Circle of Willis",
+  "root_geometry": {
+    "origin_voxel": [
+      80,
+      80,
+      80
+    ],
+    "initial_direction": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "initial_radius": 4.0
+  },
+  "branching_model": {
+    "max_depth": 5,
+    "bifurcation_probability": 0.7,
+    "bifurcation_depth_decay": 0.8,
+    "bifurcation_angle": 35.0,
+    "termination_factor": 0.3,
+    "segment_length_vox": {
+      "min": 11,
+      "max": 22
+    },
+    "max_total_segments": 29
+  },
+  "radius_model": {
+    "min_radius_vox": 1.0,
+    "radius_decay_factor": 0.85
+  },
+  "tortuosity_model": {
+    "segment_max_curvature": 3.0,
+    "collision_jitter_scale": 0.7
+  },
+  "generation_stats": {
+    "total_segments": 28,
+    "sum_successful_length": 460.0,
+    "avg_successful_length": 16.428571428571427,
+    "successful_bifurcations": 10,
+    "longest_depth": 5,
+    "avg_depth_successful_segments": 2.8214285714285716,
+    "end_due_to_max_depth": 0,
+    "end_due_to_min_radius": 0,
+    "end_due_to_collision": 0,
+    "end_due_to_termination_prob": 11,
+    "voxel_coverage_percent": 0.2313720703125
+  }
+}

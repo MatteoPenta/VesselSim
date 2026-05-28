@@ -1,0 +1,49 @@
+{
+  "anatomical_context": "Cerebral Arteries",
+  "root_geometry": {
+    "origin_voxel": [
+      80,
+      80,
+      80
+    ],
+    "initial_direction": [
+      0.6,
+      0.6,
+      0.5
+    ],
+    "initial_radius": 5.0
+  },
+  "branching_model": {
+    "max_depth": 8,
+    "bifurcation_probability": 0.6,
+    "bifurcation_depth_decay": 0.85,
+    "bifurcation_angle": 30.0,
+    "termination_factor": 0.2,
+    "segment_length_vox": {
+      "min": 13,
+      "max": 19
+    },
+    "max_total_segments": 35
+  },
+  "radius_model": {
+    "min_radius_vox": 1.0,
+    "radius_decay_factor": 0.7
+  },
+  "tortuosity_model": {
+    "segment_max_curvature": 8.0,
+    "collision_jitter_scale": 0.5
+  },
+  "generation_stats": {
+    "total_segments": 3,
+    "sum_successful_length": 52.0,
+    "avg_successful_length": 17.333333333333332,
+    "successful_bifurcations": 1,
+    "longest_depth": 1,
+    "avg_depth_successful_segments": 0.6666666666666666,
+    "end_due_to_max_depth": 0,
+    "end_due_to_min_radius": 0,
+    "end_due_to_collision": 0,
+    "end_due_to_termination_prob": 2,
+    "voxel_coverage_percent": 0.0720458984375
+  }
+}

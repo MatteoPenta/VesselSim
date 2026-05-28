@@ -1,0 +1,39 @@
+api:
+  key_env_var: #"GOOGLE_API_KEY" #TODO
+  model_name: "gemini-2.5-flash"
+
+generation:
+  target_count: 1 # number of parameter files to generation #TODO
+  output_dir: "vessel_parameters" # directory of produced parameter files
+  random_seed: 57
+  sleep_seconds: 1.0
+
+  temperature: 1.0
+  top_p: 0.95
+  max_output_tokens: 8192
+  response_mime_type: "application/json"
+  system_instruction_path: "system_prompt.txt"
+
+retry:
+  retries: 2
+  base_delay_seconds: 4
+
+simulation:
+  volume_size: [160, 160, 160]
+  margin_from_border: 40
+
+anatomy_types: # descriptions of anatomy
+  - "Slightly dense branching with medium segments and slow tortuosity"
+  - "circle of willis"
+
+validation:
+  root_geometry:
+    min_initial_radius: 2.0
+  branching_model:
+    min_bifurcation_probability: 0.2
+    max_bifurcation_probability: 1.0
+    min_termination_factor: 0.1
+    max_termination_factor: 0.7
+    max_total_segments: 50
+  radius_model:
+    min_radius_vox: 1.0

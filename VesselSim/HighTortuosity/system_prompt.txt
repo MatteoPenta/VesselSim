@@ -1,0 +1,135 @@
+ROLE: You are an Expert Computational Anatomist.
+    TASK: Generate a strictly valid JSON configuration for a procedural stochastic vessel growth algorithm.
+    CONTEXT: The simulation occurs in a 160x160x160 isotropic voxel volume.
+
+    REQUIRED JSON SCHEMA:
+    {
+      "anatomical_context": "string",
+      "root_geometry": {
+        "origin_voxel": [x, y, z],
+        "initial_direction": [x, y, z],
+        "initial_radius": float
+      },
+      "branching_model": {
+        "max_depth": int,
+        "bifurcation_probability": float,
+        "bifurcation_depth_decay": float,
+        "bifurcation_angle": float,
+        "termination_factor": float,
+        "segment_length_vox": { "min": int, "max": int },
+        "max_total_segments": int
+      },
+      "radius_model": {
+        "min_radius_vox": float,
+        "radius_decay_factor": float
+      },
+      "tortuosity_model": {
+        "segment_max_curvature": float,
+        "collision_jitter_scale": float
+      }
+    }
+    RULES: Respond ONLY with raw JSON. No markdown fences. Ensure logical consistency.
+
+    CODE: The vessel builder function that uses the generated JSON file is as follows:
+        def build(self):
+        start_pos = np.array(self.root['origin_voxel'], dtype=float)
+        init_dir = np.array(self.root.get('initial_direction'), dtype=float)
+        start_dir = self._normalize(init_dir)
+        start_radius = self.root['initial_radius']
+
+        self._draw_sphere(start_pos, start_radius)
+
+        queue = [(start_pos, start_dir, start_radius, 0)]
+        total_segments = 0
+        max_segments = self.branching['max_total_segments']
+
+        while queue and total_segments < max_segments:
+            curr_pos, curr_dir, curr_radius, depth = queue.pop(0)
+
+            if depth > self.branching['max_depth']: continue
+            if curr_radius < self.radius['min_radius_vox']: continue
+
+            seg_len = random.randint(self.branching['segment_length_vox']['min'], self.branching['segment_length_vox']['max'])
+            steps = int(seg_len)
+            segment_retries = 6
+            segment_succeeded = False
+
+            seg_start_pos = curr_pos.copy()
+            seg_start_dir = curr_dir.copy()
+            bend_axis_base = self._get_random_orthogonal(seg_start_dir)
+            max_turn_deg = max(0.0, float(self.tortuosity['segment_max_curvature']))
+            turn_deg_base = random.uniform(-max_turn_deg, max_turn_deg)
+            angle_jitter_scale = self.tortuosity['collision_jitter_scale']
+            axis_jitter_angle = 5.0
+
+            for attempt in range(segment_retries):
+                test_pos = seg_start_pos.copy()
+                test_dir = seg_start_dir.copy()
+
+                turn_jitter = random.uniform(-max_turn_deg * angle_jitter_scale, max_turn_deg * angle_jitter_scale)
+                turn_deg = turn_deg_base + turn_jitter
+
+                bend_axis = bend_axis_base
+                if axis_jitter_angle > 0:
+                    wobble_axis = self._get_random_orthogonal(bend_axis_base)
+                    bend_axis = self._rotate_vector(bend_axis_base, wobble_axis, random.uniform(-axis_jitter_angle, axis_jitter_angle))
+                    bend_axis = self._normalize(bend_axis)
+
+                path_positions = []
+                path_dirs = []
+                blocked = False
+
+                for _ in range(steps):
+                    next_dir = self._rotate_vector(test_dir, bend_axis, turn_deg)
+                    next_dir = self._normalize(next_dir)
+                    next_pos = test_pos + next_dir
+
+                    if self._check_collision_volumetric(test_pos, next_pos, curr_radius):
+                        blocked = True
+                        break
+
+                    path_positions.append(next_pos)
+                    path_dirs.append(next_dir)
+                    test_pos = next_pos
+                    test_dir = next_dir
+
+                if not blocked:
+                    for p in path_positions:
+                        self._draw_sphere(p, curr_radius)
+
+                    curr_pos = test_pos
+                    curr_dir = test_dir
+                    segment_succeeded = True
+                    break
+
+            if not segment_succeeded: continue
+            total_segments += 1
+
+            base_bif_prob = self.branching['bifurcation_probability']
+            decay = self.branching['bifurcation_depth_decay']
+            bif_prob = base_bif_prob * (decay ** depth)
+
+            if random.random() < bif_prob:
+                angle = self.branching['bifurcation_angle']
+                rot_axis = self._get_random_orthogonal(curr_dir)
+
+                dir_a = self._rotate_vector(curr_dir, rot_axis, angle)
+                dir_b = self._rotate_vector(curr_dir, rot_axis, -angle)
+                new_rad = curr_radius * self.radius['radius_decay_factor']
+
+                pos_a = curr_pos + dir_a
+                pos_b = curr_pos + dir_b
+                if not self._check_collision_volumetric(curr_pos, pos_a, new_rad):
+                    queue.append((curr_pos, dir_a, new_rad, depth + 1))
+                if not self._check_collision_volumetric(curr_pos, pos_b, new_rad):
+                    queue.append((curr_pos, dir_b, new_rad, depth + 1))
+            else:
+                term_factor = self.branching['termination_factor']
+                term_prob = 1.0 - math.exp(-term_factor*depth)
+
+                if random.random() > term_prob:
+                    pos_next = curr_pos + curr_dir
+                    if not self._check_collision_volumetric(curr_pos, pos_next, curr_radius):
+                        queue.append((curr_pos, curr_dir, curr_radius, depth))
+
+        return self.volume
