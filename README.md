@@ -40,7 +40,7 @@ the volumes in the correct format to be easily run with VesselFM. Please refer t
 the angiographic image volumes.
 
 # Citing VesselSim
-The VesselSim paper has been accepted into the MICCAI 2026 conference. The peer reviewed, finalized copy with be available
+The VesselSim paper has been accepted into the MICCAI 2026 conference. The peer reviewed, finalized copy will be available
 in October 2026. The unofficial version is currently available on [arXiv](https://arxiv.org/abs/2605.26277).
 If you find our work useful for your research, please cite:
 ```
