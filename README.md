@@ -1,7 +1,7 @@
 
 ![VesselSim Banner](static/images/banner.png)
 
-**TL;DR** *This project page provides the code to generate VesselSim's high tortuosity synthetic blood vessels.* 
+**TL;DR** *This project page provides the code to generate VesselSim's high tortuosity synthetic blood vessels and skull-injected samples.* 
 
 ---
 **VesselSim** is  a two-stage framework for universal 3D blood vessel segmentation that eliminates the need for 
