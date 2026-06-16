@@ -32,7 +32,7 @@ framework for straighter, tree-like structures. Please refer to their software a
 2. The high tortuosity vessel sample instructions and code are available [here](VesselSim/HighTortuosity/README.md).
 3. The background samples are 96x96x96-voxel empty .npy volumes, one sample volume is available [here](VesselSim/BackgroundSample/README.md).
 4. The skull-injected samples are any of the three other vessel volumes augmented with ellipsoidal shell structures designed to simulate 
-skull or bone anatomy in angiographic imaging. _(code to be added)_.
+skull or bone anatomy in angiographic imaging. The instructions and code are available [here](VesselSim/InjectedSkull/README.md).
 
 Each segmentation mask is then paired with a corresponding synthetic angiography image generated using the domain-randomized 
 rendering pipeline introduced in [VesselFM](https://github.com/bwittmann/vesselFM): _D<sub>drand</sub>_. The high tortuosity code generates 

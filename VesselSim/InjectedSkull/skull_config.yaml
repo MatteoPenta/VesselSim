@@ -1,0 +1,6 @@
+n_skull_samples: 9
+skull_dir: skull_labels
+vessel_dir: ..\VesselFMSamples\hightort
+background_dir: ..\VesselFMSamples\background
+final_output: injected_skulls
+n_final_outputs: 4
