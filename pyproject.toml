@@ -1,0 +1,19 @@
+[project]
+name = "vesselsim"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy",
+    "scipy",
+    "pandas",
+    "matplotlib",
+    "pillow",
+    "pyvista",
+    "vtk",
+    "pyyaml",
+    "requests",
+    "tqdm",
+    "google-genai",
+]
