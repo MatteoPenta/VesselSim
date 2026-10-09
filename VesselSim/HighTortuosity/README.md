@@ -78,6 +78,14 @@ You can visualize a mask by running the [visualization script](4_visualize_mask.
 python 4_visualize_mask.py --mask final_vessels/2/mask_vessel_000_02.npy
 ```
 
+To view a patch in NiiVue, convert it to NIfTI:
+```
+python convert_npy_to_nifti.py --patch final_vessels/2/mask_vessel_000_02.npy
+```
+This saves `mask_vessel_000_02.nii.gz` in the same folder, using unit voxel spacing.
+Generation scripts can also call `convert_npy_to_nifti(path)` from the
+`convert_npy_to_nifti` module after saving a .npy patch.
+
 # 5. Generating Image Volumes
 Each segmentation mask is then paired with a corresponding synthetic angiography image generated using the domain-randomized 
 rendering pipeline introduced in [VesselFM](https://github.com/bwittmann/vesselFM): _D<sub>drand</sub>_. Please refer to 

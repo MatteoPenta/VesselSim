@@ -16,4 +16,5 @@ dependencies = [
     "requests",
     "tqdm",
     "google-genai",
+    "nibabel>=5.4.2",
 ]
