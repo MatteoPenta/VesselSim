@@ -6,6 +6,7 @@ import yaml
 import numpy as np
 import random
 import math
+from convert_npy_to_nifti import convert_npy_to_nifti
 
 def load_config(config_path):
     with open(config_path, "r") as f:
@@ -313,6 +314,7 @@ def main():
     parameters_dir = Path(cfg["parameters_dir"])
     output_dir = Path(cfg["builder_output_dir"])
     masks_per_json = int(cfg["masks_per_json"])
+    save_nifti = bool(cfg.get("save_nifti", False))
 
     json_paths = sorted(parameters_dir.glob("*.json"))
     if len(json_paths) == 0:
@@ -343,6 +345,8 @@ def main():
                     "units": "voxels",
                 }
                 np.save(sample_dir / "vessel_mask.npy", mask)
+                if save_nifti:
+                    convert_npy_to_nifti(sample_dir / "vessel_mask.npy")
                 save_json(sample_dir / "raw_tree.json", {"metadata": metadata, **builder.raw_tree()})
                 save_json(sample_dir / "canonical_graph.json", {"metadata": metadata, **builder.canonical_graph()})
             except Exception as e:
