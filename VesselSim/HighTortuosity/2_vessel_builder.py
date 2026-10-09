@@ -21,8 +21,10 @@ class VesselBuilder:
         self.radius = config['radius_model']
         self.tortuosity = config['tortuosity_model']
         self.total_segments = 0
-        self._successful_segment_depths = []
-        self._successful_segment_lengths = []
+        self.root_position = None
+        self.segments = []
+        self._bifurcated = set()
+        self._drop_reasons = {}
 
     def _normalize(self, v):
         norm = np.linalg.norm(v)
@@ -88,23 +90,31 @@ class VesselBuilder:
         mask = dist_sq <= radius ** 2
         self.volume[x_min:x_max, y_min:y_max, z_min:z_max][mask] = 1
 
+    def _drop(self, parent_id, reason):
+        self._drop_reasons.setdefault(parent_id, []).append(reason)
+
     def build(self):
         start_pos = np.array(self.root['origin_voxel'], dtype=float)
         init_dir = np.array(self.root.get('initial_direction', [0, 0, 1]), dtype=float)
         if np.linalg.norm(init_dir) == 0: init_dir = np.array([0, 0, 1])
         start_dir = self._normalize(init_dir)
         start_radius = self.root['initial_radius']
+        self.root_position = start_pos.tolist()
 
         self._draw_sphere(start_pos, start_radius)
 
-        queue = [(start_pos, start_dir, start_radius, 0)]
+        queue = [(start_pos, start_dir, start_radius, 0, None)]
         max_segments = self.branching['max_total_segments']
 
         while queue and  self.total_segments < max_segments:
-            curr_pos, curr_dir, curr_radius, depth = queue.pop(0)
+            curr_pos, curr_dir, curr_radius, depth, parent_id = queue.pop(0)
 
-            if depth > int(self.branching["max_depth"]): continue
-            if curr_radius < float(self.radius["min_radius_vox"]): continue
+            if depth > int(self.branching["max_depth"]):
+                self._drop(parent_id, "max_depth")
+                continue
+            if curr_radius < float(self.radius["min_radius_vox"]):
+                self._drop(parent_id, "min_radius")
+                continue
 
             seg_len = random.randint(self.branching['segment_length_vox']['min'], self.branching['segment_length_vox']['max'])
             steps = int(seg_len)
@@ -159,14 +169,27 @@ class VesselBuilder:
                     segment_succeeded = True
                     break
 
-            if not segment_succeeded: continue
+            if not segment_succeeded:
+                self._drop(parent_id, "segment_blocked")
+                continue
             self.total_segments += 1
+
+            seg_id = len(self.segments)
+            self.segments.append({
+                "segment_id": seg_id,
+                "parent_segment_id": parent_id,
+                "depth": depth,
+                "radius": float(curr_radius),
+                "start_position": seg_start_pos.tolist(),
+                "path_positions": [p.tolist() for p in path_positions],
+            })
 
             base_bif_prob = self.branching['bifurcation_probability']
             decay = self.branching['bifurcation_depth_decay']
             bif_prob = base_bif_prob * (decay ** depth)
 
             if random.random() < bif_prob:
+                self._bifurcated.add(seg_id)
                 angle = self.branching['bifurcation_angle']
                 rot_axis = self._get_random_orthogonal(curr_dir)
 
@@ -177,9 +200,13 @@ class VesselBuilder:
                 pos_a = curr_pos + dir_a
                 pos_b = curr_pos + dir_b
                 if not self._check_collision_volumetric(curr_pos, pos_a, new_rad):
-                    queue.append((curr_pos, dir_a, new_rad, depth + 1))
+                    queue.append((curr_pos, dir_a, new_rad, depth + 1, seg_id))
+                else:
+                    self._drop(seg_id, "bifurcation_blocked")
                 if not self._check_collision_volumetric(curr_pos, pos_b, new_rad):
-                    queue.append((curr_pos, dir_b, new_rad, depth + 1))
+                    queue.append((curr_pos, dir_b, new_rad, depth + 1, seg_id))
+                else:
+                    self._drop(seg_id, "bifurcation_blocked")
 
 
             else:
@@ -189,18 +216,84 @@ class VesselBuilder:
                 if random.random() > term_prob:
                     pos_next = curr_pos + curr_dir
                     if not self._check_collision_volumetric(curr_pos, pos_next, curr_radius):
-                        queue.append((curr_pos, curr_dir, curr_radius, depth))
+                        queue.append((curr_pos, curr_dir, curr_radius, depth, seg_id))
+                    else:
+                        self._drop(seg_id, "continuation_blocked")
+                else:
+                    self._drop(seg_id, "termination_probability")
+
+        for entry in queue:
+            self._drop(entry[4], "max_segments")
 
         return self.volume
+
+    def raw_tree(self):
+        return {"root_position": self.root_position, "segments": self.segments}
+
+    def canonical_graph(self):
+        # Nodes: root, bifurcations (with >= 1 accepted child) and terminal endpoints.
+        # Edges: chains of continuation segments between nodes, with exact centerline points.
+        children = {}
+        for seg in self.segments:
+            children.setdefault(seg["parent_segment_id"], []).append(seg["segment_id"])
+
+        root = {"id": 0, "type": "root", "position": self.root_position}
+        if None not in children:
+            root["termination_reasons"] = self._drop_reasons.get(None, [])
+        nodes = [root]
+        edges = []
+
+        pending = [(0, seg_id) for seg_id in children.get(None, [])]
+        while pending:
+            source, seg_id = pending.pop(0)
+            first = self.segments[seg_id]
+            points = [first["start_position"]]
+            radii = [first["radius"]]
+            depths = [first["depth"]]
+            segment_ids = []
+
+            while True:
+                seg = self.segments[seg_id]
+                n = len(seg["path_positions"])
+                segment_ids.append(seg_id)
+                points += seg["path_positions"]
+                radii += [seg["radius"]] * n
+                depths += [seg["depth"]] * n
+                kids = children.get(seg_id, [])
+                if seg_id in self._bifurcated or len(kids) != 1:
+                    break
+                seg_id = kids[0]
+
+            node = {"id": len(nodes), "position": points[-1]}
+            if kids:
+                node["type"] = "bifurcation"
+                node["n_children"] = len(kids)
+                pending += [(node["id"], kid) for kid in kids]
+            else:
+                node["type"] = "terminal"
+                node["termination_reasons"] = self._drop_reasons.get(seg_id, [])
+            nodes.append(node)
+
+            edges.append({
+                "id": len(edges),
+                "source": source,
+                "target": node["id"],
+                "segment_ids": segment_ids,
+                "points": points,
+                "radii": radii,
+                "depths": depths,
+            })
+
+        return {"nodes": nodes, "edges": edges}
 
 def next_attempt_for_base(output_dir: str, base: str) -> int:
     if not os.path.isdir(output_dir):
         return 0
-    pat = re.compile(rf"^{re.escape(base)}_(\d{{2}})\.npy$")
+    pat = re.compile(rf"^{re.escape(base)}_(\d{{2}})$")
     max_att = -1
     for fn in os.listdir(output_dir):
         m = pat.match(fn)
-        if m:
+        if m and os.path.isdir(os.path.join(output_dir, fn)):
             max_att = max(max_att, int(m.group(1)))
     return max_att + 1
 
@@ -229,7 +322,7 @@ def main():
 
     print(f"Found {len(json_paths)} JSON parameter files.")
     print(f"Generating {masks_per_json} vessel masks per JSON.")
-    print(f"Saving masks to: {output_dir}")
+    print(f"Saving masks and graphs to: {output_dir}")
 
     for json_path in json_paths:
         base = json_path.stem
@@ -241,9 +334,17 @@ def main():
                 builder = VesselBuilder(params, volume_size)
                 mask = builder.build()
                 attempt = next_attempt_for_base(output_dir, base)
-                mask_name = f"{base}_{attempt:02d}.npy"
-                mask_path = output_dir / mask_name
-                np.save(mask_path, mask)
+                sample_dir = output_dir / f"{base}_{attempt:02d}"
+                sample_dir.mkdir()
+                metadata = {
+                    "parameters_file": json_path.name,
+                    "volume_shape": list(volume_size),
+                    "coordinates": "continuous voxel indices (x, y, z) into vessel_mask.npy, i.e. vessel_mask[x, y, z]",
+                    "units": "voxels",
+                }
+                np.save(sample_dir / "vessel_mask.npy", mask)
+                save_json(sample_dir / "raw_tree.json", {"metadata": metadata, **builder.raw_tree()})
+                save_json(sample_dir / "canonical_graph.json", {"metadata": metadata, **builder.canonical_graph()})
             except Exception as e:
                 print(f"  Failed for {json_path.name}: {e}")
     print("Done.")
