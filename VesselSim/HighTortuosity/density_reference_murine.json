@@ -1,0 +1,709 @@
+{
+ "directory": "/lustre/fswork/projects/rech/vnc/uzk93pr/data/foreground_samples/syn-cerebral-octa-seg",
+ "settings": {
+  "n_crops": 200,
+  "crop_size": 128,
+  "seed": 0,
+  "crop_offsets": "uniform in [0, size-128] per axis",
+  "skeletonize": "skimage.morphology.skeletonize(mask) > 0",
+  "components_connectivity": 26,
+  "radius": "scipy EDT of mask sampled on skeleton voxels"
+ },
+ "target": {
+  "reference": "self",
+  "fraction": 1.0,
+  "skeleton_per_128": 5081.46170724352,
+  "near_empty_threshold": 508.14617072435203
+ },
+ "summary": {
+  "n_volumes": 25,
+  "skeleton_per_128": {
+   "mean": 5081.46170724352,
+   "std": 949.4509527457896,
+   "cv": 0.18684603121034377,
+   "min": 3087.813050368,
+   "max": 6793.027649536
+  },
+  "deviation_from_target": 0.0,
+  "vessel_frac": {
+   "mean": 0.02721403648,
+   "std": 0.004414283889797149,
+   "cv": 0.1622061428866413,
+   "min": 0.016697728,
+   "max": 0.03500768
+  },
+  "components": {
+   "mean": 26.24,
+   "std": 18.71743572180762,
+   "cv": 0.7133169101298636,
+   "min": 6.0,
+   "max": 97.0
+  },
+  "radius_pcts": {
+   "5": 1.0,
+   "25": 1.414,
+   "50": 1.414,
+   "75": 1.414,
+   "95": 2.828
+  },
+  "crop_pcts": {
+   "5": 3278.9,
+   "50": 5459.5,
+   "95": 7271.0
+  },
+  "near_empty_frac": 0.0028,
+  "gpu_cache_mb": 390.625
+ },
+ "volumes": [
+  {
+   "file": "seg_01.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.030045056,
+   "skeleton_vox": 29571,
+   "skeleton_per_128": 3968.952434688,
+   "components": 35,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 2.236,
+    "95": 3.317
+   },
+   "crop_pcts": {
+    "5": 3823.65,
+    "50": 4394.5,
+    "95": 4692.65
+   },
+   "seconds": 5.9,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_02.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.022427904,
+   "skeleton_vox": 28074,
+   "skeleton_per_128": 3768.028495872,
+   "components": 21,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 2.236,
+    "95": 3.162
+   },
+   "crop_pcts": {
+    "5": 3059.4,
+    "50": 3732.5,
+    "95": 4342.549999999998
+   },
+   "seconds": 4.8,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_03.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.020759616,
+   "skeleton_vox": 27469,
+   "skeleton_per_128": 3686.826770432,
+   "components": 27,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 1.414,
+    "95": 3.162
+   },
+   "crop_pcts": {
+    "5": 3278.65,
+    "50": 3899.0,
+    "95": 4475.45
+   },
+   "seconds": 4.7,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_04.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.032393856,
+   "skeleton_vox": 40336,
+   "skeleton_per_128": 5413.806276608,
+   "components": 23,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 1.414,
+    "95": 3.162
+   },
+   "crop_pcts": {
+    "5": 2130.35,
+    "50": 5459.5,
+    "95": 7218.9
+   },
+   "seconds": 6.0,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_05.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.029973184,
+   "skeleton_vox": 41363,
+   "skeleton_per_128": 5551.647883264,
+   "components": 6,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 1.414,
+    "95": 2.236
+   },
+   "crop_pcts": {
+    "5": 3906.4500000000003,
+    "50": 6758.5,
+    "95": 7681.5
+   },
+   "seconds": 6.0,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_06.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.025628992,
+   "skeleton_vox": 36219,
+   "skeleton_per_128": 4861.231890432,
+   "components": 25,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 1.414,
+    "95": 3.0
+   },
+   "crop_pcts": {
+    "5": 3876.4,
+    "50": 5736.5,
+    "95": 6393.15
+   },
+   "seconds": 5.0,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_07.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.0250112,
+   "skeleton_vox": 36644,
+   "skeleton_per_128": 4918.274424832,
+   "components": 8,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 1.414,
+    "95": 2.236
+   },
+   "crop_pcts": {
+    "5": 4542.9,
+    "50": 4927.5,
+    "95": 5295.0
+   },
+   "seconds": 5.8,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_08.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.028555392,
+   "skeleton_vox": 39889,
+   "skeleton_per_128": 5353.810952192,
+   "components": 31,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 2.236,
+    "95": 2.236
+   },
+   "crop_pcts": {
+    "5": 4995.2,
+    "50": 5497.5,
+    "95": 6027.799999999999
+   },
+   "seconds": 6.0,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_09.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.025075456,
+   "skeleton_vox": 36836,
+   "skeleton_per_128": 4944.044228608,
+   "components": 12,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 1.732,
+    "95": 2.236
+   },
+   "crop_pcts": {
+    "5": 4425.35,
+    "50": 5157.0,
+    "95": 6137.2
+   },
+   "seconds": 5.9,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_10.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.0318688,
+   "skeleton_vox": 29582,
+   "skeleton_per_128": 3970.428829696,
+   "components": 19,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 1.414,
+    "95": 3.162
+   },
+   "crop_pcts": {
+    "5": 2584.85,
+    "50": 4496.0,
+    "95": 5107.1
+   },
+   "seconds": 6.1,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_11.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.026169536,
+   "skeleton_vox": 39273,
+   "skeleton_per_128": 5271.132831744,
+   "components": 35,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 1.414,
+    "95": 2.236
+   },
+   "crop_pcts": {
+    "5": 5154.0,
+    "50": 5838.5,
+    "95": 6637.9
+   },
+   "seconds": 6.1,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_12.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.034373056,
+   "skeleton_vox": 50612,
+   "skeleton_per_128": 6793.027649536,
+   "components": 31,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 1.414,
+    "95": 2.236
+   },
+   "crop_pcts": {
+    "5": 5713.9,
+    "50": 6505.0,
+    "95": 7859.05
+   },
+   "seconds": 6.1,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_13.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.027630144,
+   "skeleton_vox": 43601,
+   "skeleton_per_128": 5852.027158528,
+   "components": 29,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 1.414,
+    "95": 2.236
+   },
+   "crop_pcts": {
+    "5": 4997.7,
+    "50": 6043.5,
+    "95": 7156.45
+   },
+   "seconds": 4.9,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_14.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.027336576,
+   "skeleton_vox": 34846,
+   "skeleton_per_128": 4676.950949888,
+   "components": 25,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 2.236,
+    "95": 3.162
+   },
+   "crop_pcts": {
+    "5": 4430.95,
+    "50": 5013.5,
+    "95": 5575.2
+   },
+   "seconds": 5.9,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_15.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.031676672,
+   "skeleton_vox": 46704,
+   "skeleton_per_128": 6268.504768512,
+   "components": 24,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 1.414,
+    "95": 2.236
+   },
+   "crop_pcts": {
+    "5": 3957.75,
+    "50": 5553.5,
+    "95": 6575.3
+   },
+   "seconds": 6.3,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_16.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.023549696,
+   "skeleton_vox": 25855,
+   "skeleton_per_128": 3470.19935744,
+   "components": 13,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 2.0,
+    "95": 3.162
+   },
+   "crop_pcts": {
+    "5": 1683.0,
+    "50": 4706.0,
+    "95": 6105.3
+   },
+   "seconds": 5.0,
+   "near_empty_frac": 0.01
+  },
+  {
+   "file": "seg_17.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.016697728,
+   "skeleton_vox": 23006,
+   "skeleton_per_128": 3087.813050368,
+   "components": 10,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 1.414,
+    "95": 3.162
+   },
+   "crop_pcts": {
+    "5": 470.85,
+    "50": 3478.5,
+    "95": 5918.25
+   },
+   "seconds": 4.7,
+   "near_empty_frac": 0.06
+  },
+  {
+   "file": "seg_18.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.022076608,
+   "skeleton_vox": 39509,
+   "skeleton_per_128": 5302.808215552,
+   "components": 11,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 1.414,
+    "95": 2.236
+   },
+   "crop_pcts": {
+    "5": 5026.4,
+    "50": 5456.0,
+    "95": 5797.3
+   },
+   "seconds": 5.6,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_19.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.026400576,
+   "skeleton_vox": 40092,
+   "skeleton_per_128": 5381.057150976,
+   "components": 66,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 1.414,
+    "95": 2.236
+   },
+   "crop_pcts": {
+    "5": 4304.65,
+    "50": 5718.5,
+    "95": 6749.1
+   },
+   "seconds": 6.0,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_20.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.033204928,
+   "skeleton_vox": 45331,
+   "skeleton_per_128": 6084.223827968,
+   "components": 18,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 2.236,
+    "95": 3.162
+   },
+   "crop_pcts": {
+    "5": 5239.25,
+    "50": 6298.0,
+    "95": 7545.1
+   },
+   "seconds": 5.9,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_21.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.023747968,
+   "skeleton_vox": 40762,
+   "skeleton_per_128": 5470.983028736,
+   "components": 31,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 1.414,
+    "95": 2.236
+   },
+   "crop_pcts": {
+    "5": 3948.55,
+    "50": 6497.0,
+    "95": 8035.3499999999985
+   },
+   "seconds": 5.7,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_22.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.03500768,
+   "skeleton_vox": 49030,
+   "skeleton_per_128": 6580.69520384,
+   "components": 97,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 2.236,
+    "95": 3.162
+   },
+   "crop_pcts": {
+    "5": 3815.65,
+    "50": 7161.0,
+    "95": 8382.05
+   },
+   "seconds": 4.9,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_23.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.025491648,
+   "skeleton_vox": 41983,
+   "skeleton_per_128": 5634.862874624,
+   "components": 24,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 1.414,
+    "95": 2.236
+   },
+   "crop_pcts": {
+    "5": 5380.95,
+    "50": 6208.0,
+    "95": 7005.25
+   },
+   "seconds": 5.8,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_24.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.029774784,
+   "skeleton_vox": 42213,
+   "skeleton_per_128": 5665.732952064,
+   "components": 18,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 2.236,
+    "95": 3.0
+   },
+   "crop_pcts": {
+    "5": 4785.7,
+    "50": 5697.5,
+    "95": 6624.1
+   },
+   "seconds": 5.7,
+   "near_empty_frac": 0.0
+  },
+  {
+   "file": "seg_25.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_frac": 0.025473856,
+   "skeleton_vox": 37696,
+   "skeleton_per_128": 5059.471474688,
+   "components": 17,
+   "radius_pcts": {
+    "5": 1.0,
+    "25": 1.414,
+    "50": 1.414,
+    "75": 1.414,
+    "95": 2.236
+   },
+   "crop_pcts": {
+    "5": 5104.95,
+    "50": 5627.0,
+    "95": 5936.75
+   },
+   "seconds": 6.0,
+   "near_empty_frac": 0.0
+  }
+ ]
+}
