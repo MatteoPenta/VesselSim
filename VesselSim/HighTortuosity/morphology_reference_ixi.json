@@ -1,0 +1,316 @@
+{
+ "directory": "/lustre/fswork/projects/rech/vnc/uzk93pr/data/IXI/full_labels_res",
+ "label": 1,
+ "summary": {
+  "n_volumes": 20,
+  "radius_pcts": {
+   "10": 1.0,
+   "25": 1.0,
+   "50": 1.0,
+   "75": 1.414,
+   "90": 2.0
+  },
+  "radius_mean": 1.3146933317184448,
+  "branch_length_pcts": {
+   "10": 0.0,
+   "25": 1.0,
+   "50": 4.414,
+   "75": 14.657,
+   "90": 32.582
+  },
+  "branch_length_weighted_median": 31.362867593890407,
+  "tortuosity_pcts": {
+   "10": 1.12,
+   "25": 1.165,
+   "50": 1.243,
+   "75": 1.422,
+   "90": 1.774
+  },
+  "vessel_vox_per_skeleton_vox": 10.80262708220794,
+  "branches_per_1000_skeleton_vox": 91.66124640333373,
+  "endpoints_per_1000_skeleton_vox": 66.78499377129062,
+  "components_per_1000_skeleton_vox": 27.13071470306144
+ },
+ "volumes": [
+  {
+   "file": "IXI002-Guys-0828_merged.nii.gz",
+   "shape": [
+    480,
+    480,
+    160
+   ],
+   "vessel_vox": 110406,
+   "skeleton_vox": 7668,
+   "branches": 637,
+   "endpoints": 308,
+   "components": 57,
+   "blocks_128": 17.578125
+  },
+  {
+   "file": "IXI017-Guys-0698_merged.nii.gz",
+   "shape": [
+    480,
+    480,
+    160
+   ],
+   "vessel_vox": 105692,
+   "skeleton_vox": 9627,
+   "branches": 915,
+   "endpoints": 605,
+   "components": 229,
+   "blocks_128": 17.578125
+  },
+  {
+   "file": "IXI026-Guys-0696_merged.nii.gz",
+   "shape": [
+    480,
+    480,
+    160
+   ],
+   "vessel_vox": 119868,
+   "skeleton_vox": 7533,
+   "branches": 635,
+   "endpoints": 501,
+   "components": 220,
+   "blocks_128": 17.578125
+  },
+  {
+   "file": "IXI035-IOP-0873_merged.nii.gz",
+   "shape": [
+    540,
+    540,
+    147
+   ],
+   "vessel_vox": 120663,
+   "skeleton_vox": 13362,
+   "branches": 1034,
+   "endpoints": 410,
+   "components": 54,
+   "blocks_128": 20.439720153808594
+  },
+  {
+   "file": "IXI044-Guys-0712_merged.nii.gz",
+   "shape": [
+    480,
+    480,
+    160
+   ],
+   "vessel_vox": 98388,
+   "skeleton_vox": 8874,
+   "branches": 665,
+   "endpoints": 569,
+   "components": 257,
+   "blocks_128": 17.578125
+  },
+  {
+   "file": "IXI056-HH-1327_merged.nii.gz",
+   "shape": [
+    480,
+    480,
+    160
+   ],
+   "vessel_vox": 104717,
+   "skeleton_vox": 9149,
+   "branches": 676,
+   "endpoints": 546,
+   "components": 230,
+   "blocks_128": 17.578125
+  },
+  {
+   "file": "IXI072-HH-2324_merged.nii.gz",
+   "shape": [
+    480,
+    480,
+    160
+   ],
+   "vessel_vox": 108577,
+   "skeleton_vox": 7110,
+   "branches": 600,
+   "endpoints": 540,
+   "components": 258,
+   "blocks_128": 17.578125
+  },
+  {
+   "file": "IXI088-Guys-0758_merged.nii.gz",
+   "shape": [
+    480,
+    480,
+    160
+   ],
+   "vessel_vox": 104801,
+   "skeleton_vox": 8255,
+   "branches": 743,
+   "endpoints": 549,
+   "components": 239,
+   "blocks_128": 17.578125
+  },
+  {
+   "file": "IXI109-Guys-0732_merged.nii.gz",
+   "shape": [
+    480,
+    480,
+    160
+   ],
+   "vessel_vox": 102920,
+   "skeleton_vox": 8443,
+   "branches": 637,
+   "endpoints": 540,
+   "components": 244,
+   "blocks_128": 17.578125
+  },
+  {
+   "file": "IXI232-IOP-0898_merged.nii.gz",
+   "shape": [
+    540,
+    540,
+    147
+   ],
+   "vessel_vox": 63133,
+   "skeleton_vox": 4037,
+   "branches": 344,
+   "endpoints": 232,
+   "components": 80,
+   "blocks_128": 20.439720153808594
+  },
+  {
+   "file": "IXI293-IOP-0876_merged.nii.gz",
+   "shape": [
+    540,
+    540,
+    147
+   ],
+   "vessel_vox": 120952,
+   "skeleton_vox": 13296,
+   "branches": 1910,
+   "endpoints": 1898,
+   "components": 972,
+   "blocks_128": 20.439720153808594
+  },
+  {
+   "file": "IXI305-IOP-0871_merged.nii.gz",
+   "shape": [
+    540,
+    540,
+    147
+   ],
+   "vessel_vox": 94183,
+   "skeleton_vox": 12127,
+   "branches": 1260,
+   "endpoints": 963,
+   "components": 405,
+   "blocks_128": 20.439720153808594
+  },
+  {
+   "file": "IXI312-Guys-0887_merged.nii.gz",
+   "shape": [
+    480,
+    480,
+    160
+   ],
+   "vessel_vox": 117014,
+   "skeleton_vox": 9627,
+   "branches": 808,
+   "endpoints": 367,
+   "components": 63,
+   "blocks_128": 17.578125
+  },
+  {
+   "file": "IXI331-IOP-0892_merged.nii.gz",
+   "shape": [
+    540,
+    540,
+    147
+   ],
+   "vessel_vox": 62985,
+   "skeleton_vox": 3796,
+   "branches": 258,
+   "endpoints": 215,
+   "components": 91,
+   "blocks_128": 20.439720153808594
+  },
+  {
+   "file": "IXI378-IOP-0972_merged.nii.gz",
+   "shape": [
+    540,
+    540,
+    147
+   ],
+   "vessel_vox": 77127,
+   "skeleton_vox": 8883,
+   "branches": 734,
+   "endpoints": 342,
+   "components": 68,
+   "blocks_128": 20.439720153808594
+  },
+  {
+   "file": "IXI434-IOP-1010_merged.nii.gz",
+   "shape": [
+    540,
+    540,
+    147
+   ],
+   "vessel_vox": 58358,
+   "skeleton_vox": 3932,
+   "branches": 309,
+   "endpoints": 227,
+   "components": 83,
+   "blocks_128": 20.439720153808594
+  },
+  {
+   "file": "IXI474-IOP-1138_merged.nii.gz",
+   "shape": [
+    540,
+    540,
+    147
+   ],
+   "vessel_vox": 108244,
+   "skeleton_vox": 12520,
+   "branches": 1095,
+   "endpoints": 477,
+   "components": 117,
+   "blocks_128": 20.439720153808594
+  },
+  {
+   "file": "IXI543-IOP-1148_merged.nii.gz",
+   "shape": [
+    540,
+    540,
+    147
+   ],
+   "vessel_vox": 90138,
+   "skeleton_vox": 10408,
+   "branches": 957,
+   "endpoints": 916,
+   "components": 427,
+   "blocks_128": 20.439720153808594
+  },
+  {
+   "file": "IXI571-IOP-1154_merged.nii.gz",
+   "shape": [
+    540,
+    540,
+    147
+   ],
+   "vessel_vox": 92586,
+   "skeleton_vox": 11526,
+   "branches": 1216,
+   "endpoints": 941,
+   "components": 400,
+   "blocks_128": 20.439720153808594
+  },
+  {
+   "file": "IXI597-IOP-1161_merged.nii.gz",
+   "shape": [
+    540,
+    540,
+    147
+   ],
+   "vessel_vox": 99039,
+   "skeleton_vox": 11245,
+   "branches": 1196,
+   "endpoints": 970,
+   "components": 428,
+   "blocks_128": 20.439720153808594
+  }
+ ]
+}

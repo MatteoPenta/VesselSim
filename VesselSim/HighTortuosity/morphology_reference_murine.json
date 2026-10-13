@@ -1,0 +1,386 @@
+{
+ "directory": "/lustre/fswork/projects/rech/vnc/uzk93pr/data/foreground_samples/syn-cerebral-octa-seg",
+ "label": null,
+ "summary": {
+  "n_volumes": 25,
+  "radius_pcts": {
+   "10": 1.0,
+   "25": 1.414,
+   "50": 1.414,
+   "75": 1.414,
+   "90": 2.236
+  },
+  "radius_mean": 1.6554124355316162,
+  "branch_length_pcts": {
+   "10": 1.0,
+   "25": 3.414,
+   "50": 9.899,
+   "75": 19.096,
+   "90": 30.042
+  },
+  "branch_length_weighted_median": 22.459972868926734,
+  "tortuosity_pcts": {
+   "10": 1.057,
+   "25": 1.08,
+   "50": 1.107,
+   "75": 1.131,
+   "90": 1.148
+  },
+  "vessel_vox_per_skeleton_vox": 11.231408267969437,
+  "branches_per_1000_skeleton_vox": 81.02200114950301,
+  "endpoints_per_1000_skeleton_vox": 14.61707181012915,
+  "components_per_1000_skeleton_vox": 0.6930826965988235
+ },
+ "volumes": [
+  {
+   "file": "seg_01.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 469454,
+   "skeleton_vox": 29571,
+   "branches": 1947,
+   "endpoints": 432,
+   "components": 35,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_02.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 350436,
+   "skeleton_vox": 28074,
+   "branches": 1944,
+   "endpoints": 429,
+   "components": 21,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_03.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 324369,
+   "skeleton_vox": 27469,
+   "branches": 1840,
+   "endpoints": 430,
+   "components": 27,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_04.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 506154,
+   "skeleton_vox": 40336,
+   "branches": 4108,
+   "endpoints": 534,
+   "components": 23,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_05.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 468331,
+   "skeleton_vox": 41363,
+   "branches": 3751,
+   "endpoints": 442,
+   "components": 6,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_06.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 400453,
+   "skeleton_vox": 36219,
+   "branches": 2726,
+   "endpoints": 455,
+   "components": 25,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_07.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 390800,
+   "skeleton_vox": 36644,
+   "branches": 2679,
+   "endpoints": 491,
+   "components": 8,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_08.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 446178,
+   "skeleton_vox": 39889,
+   "branches": 3027,
+   "endpoints": 646,
+   "components": 31,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_09.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 391804,
+   "skeleton_vox": 36836,
+   "branches": 2854,
+   "endpoints": 543,
+   "components": 12,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_10.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 497950,
+   "skeleton_vox": 29582,
+   "branches": 2005,
+   "endpoints": 376,
+   "components": 19,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_11.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 408899,
+   "skeleton_vox": 39273,
+   "branches": 3039,
+   "endpoints": 643,
+   "components": 35,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_12.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 537079,
+   "skeleton_vox": 50612,
+   "branches": 4578,
+   "endpoints": 779,
+   "components": 31,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_13.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 431721,
+   "skeleton_vox": 43601,
+   "branches": 4070,
+   "endpoints": 698,
+   "components": 29,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_14.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 427134,
+   "skeleton_vox": 34846,
+   "branches": 2451,
+   "endpoints": 541,
+   "components": 25,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_15.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 494948,
+   "skeleton_vox": 46704,
+   "branches": 3765,
+   "endpoints": 724,
+   "components": 24,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_16.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 367964,
+   "skeleton_vox": 25855,
+   "branches": 1952,
+   "endpoints": 329,
+   "components": 13,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_17.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 260902,
+   "skeleton_vox": 23006,
+   "branches": 1914,
+   "endpoints": 333,
+   "components": 10,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_18.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 344947,
+   "skeleton_vox": 39509,
+   "branches": 3363,
+   "endpoints": 580,
+   "components": 11,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_19.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 412509,
+   "skeleton_vox": 40092,
+   "branches": 3594,
+   "endpoints": 834,
+   "components": 66,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_20.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 518827,
+   "skeleton_vox": 45331,
+   "branches": 3109,
+   "endpoints": 532,
+   "components": 18,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_21.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 371062,
+   "skeleton_vox": 40762,
+   "branches": 4002,
+   "endpoints": 653,
+   "components": 31,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_22.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 546995,
+   "skeleton_vox": 49030,
+   "branches": 4059,
+   "endpoints": 770,
+   "components": 97,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_23.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 398307,
+   "skeleton_vox": 41983,
+   "branches": 3625,
+   "endpoints": 567,
+   "components": 24,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_24.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 465231,
+   "skeleton_vox": 42213,
+   "branches": 3286,
+   "endpoints": 591,
+   "components": 18,
+   "blocks_128": 7.450580596923828
+  },
+  {
+   "file": "seg_25.npy",
+   "shape": [
+    250,
+    250,
+    250
+   ],
+   "vessel_vox": 398029,
+   "skeleton_vox": 37696,
+   "branches": 2999,
+   "endpoints": 483,
+   "components": 17,
+   "blocks_128": 7.450580596923828
+  }
+ ]
+}
