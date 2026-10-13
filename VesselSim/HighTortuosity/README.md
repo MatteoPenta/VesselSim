@@ -38,6 +38,15 @@ of parameters are:
       }
 }
 ```
+Optional keys (absent keys keep the original behaviour):
+- `radius_model.murray_exponent` (e.g. `3.0`): daughter radii follow Murray's law `r_p^g = r_a^g + r_b^g` instead of
+  `radius_decay_factor`.
+- `radius_model.asymmetry_ratio` (`{"min": float, "max": float}`): range of the ratio `r_b / r_a` (thin / thick daughter),
+  used with `murray_exponent`. `1.0` is a symmetric split.
+- `branching_model.bifurcation_angle_model` (`"fixed"` or `"murray"`): `"murray"` uses Murray's optimal angles, so the
+  thinner daughter deviates more than the thick one. `"fixed"` uses `bifurcation_angle` for both daughters.
+- `branching_model.bifurcation_angle_jitter` (degrees): uniform jitter added to the Murray angles.
+
 Some sample parameter files are available in the [vessel_parameters](vessel_parameters) folder. These parameters can either be filled
 manually or, using our [prompt manager](1_prompt_manager.py) script. The prompt manager uses [Google Gemini API](https://aistudio.google.com/)
 to automatically generate these parameter files. The prompt given to Gemini is available [here](system_prompt.txt).
@@ -58,6 +67,14 @@ To run the vessel builder script, fill out the [generation_config](generation_co
 to generate per parameter file. The outputs will be labeled as {parameter file name}_{mask count}.npy. Then run:
 ```
 python 2_vessel_builder.py
+```
+
+`generation_config.yaml` also accepts `confine_to_volume` (keep the whole vessel inside the volume, so graph and mask
+stay aligned) and `seed` (master seed; each sample's seed and parameters are saved in its graph metadata).
+The toy graph-experiment dataset uses its own config:
+```
+python 2_vessel_builder.py --config generation_config_toy.yaml
+python 6_graph_stats.py --dir toy_samples
 ```
 
 # 3. Extracting Patches
