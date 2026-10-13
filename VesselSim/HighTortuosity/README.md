@@ -89,6 +89,15 @@ python verify_overlay_volumes.py --root overlay_volumes
 ```
 `measure_density.py` and `measure_morphology.py` compare outputs with the murine and IXI references.
 
+The murine reference is the 25 synthetic 250³ label volumes of the
+[syn-cerebral-octa-seg](https://huggingface.co/datasets/bwittmann/syn-cerebral-octa-seg) dataset
+([code](https://github.com/bwittmann/syn-cerebral-octa-seg)), which are voxelized patches of murine cerebral vessel
+graphs at 2 µm isotropic resolution:
+
+> B. Wittmann, L. Glandorf, J. C. Paetzold, T. Amiranashvili, T. Wälchli, D. Razansky, B. Menze. *Simulation-Based
+> Segmentation of Blood Vessels in Cerebral 3D OCTA Images.* MICCAI 2024, LNCS, pp. 645–655.
+> [doi:10.1007/978-3-031-72111-3_61](https://doi.org/10.1007/978-3-031-72111-3_61)
+
 # 3. Extracting Patches
 [Patch extraction](3_extract_patches.py) takes the initial 160 × 160 × 160 voxel volumes and extracts 96 × 96 × 96 voxel 
 patches that have passed an automatic quality control based on criteria of flow continuity, vessel integrity (no small 
