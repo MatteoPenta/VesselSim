@@ -1,0 +1,1556 @@
+{
+ "IXI_VesselVerse": [
+  {
+   "file": "IXI012-HH-1211-Mask.nii.gz",
+   "vessel_frac": 0.002824273003472222,
+   "centerline_vox_total": 8006,
+   "crop_centerline_mean": 1813.58,
+   "crop_centerline_p10_p50_p90": [
+    845.9000000000001,
+    1874.0,
+    2644.9
+   ]
+  },
+  {
+   "file": "IXI016-Guys-0697-Mask.nii.gz",
+   "vessel_frac": 0.0029736599392361112,
+   "centerline_vox_total": 9508,
+   "crop_centerline_mean": 2088.5,
+   "crop_centerline_p10_p50_p90": [
+    1212.2,
+    2179.0,
+    2861.9
+   ]
+  },
+  {
+   "file": "IXI020-Guys-0700-Mask.nii.gz",
+   "vessel_frac": 0.003111273871527778,
+   "centerline_vox_total": 8454,
+   "crop_centerline_mean": 1794.86,
+   "crop_centerline_p10_p50_p90": [
+    1243.2,
+    1867.5,
+    2248.0
+   ]
+  },
+  {
+   "file": "IXI035-IOP-0873-Mask.nii.gz",
+   "vessel_frac": 0.0028149407911312674,
+   "centerline_vox_total": 13362,
+   "crop_centerline_mean": 2399.94,
+   "crop_centerline_p10_p50_p90": [
+    1142.3,
+    2631.0,
+    3392.7000000000003
+   ]
+  },
+  {
+   "file": "IXI049-HH-1358-Mask.nii.gz",
+   "vessel_frac": 0.0031220703125,
+   "centerline_vox_total": 9202,
+   "crop_centerline_mean": 1458.78,
+   "crop_centerline_p10_p50_p90": [
+    948.2,
+    1546.0,
+    1854.0
+   ]
+  },
+  {
+   "file": "IXI056-HH-1327-Mask.nii.gz",
+   "vessel_frac": 0.002840630425347222,
+   "centerline_vox_total": 9149,
+   "crop_centerline_mean": 1619.8,
+   "crop_centerline_p10_p50_p90": [
+    999.6,
+    1793.5,
+    2100.4
+   ]
+  },
+  {
+   "file": "IXI114-Guys-0737-Mask.nii.gz",
+   "vessel_frac": 0.0027886827256944444,
+   "centerline_vox_total": 7858,
+   "crop_centerline_mean": 1487.3,
+   "crop_centerline_p10_p50_p90": [
+    841.9,
+    1534.0,
+    2105.0
+   ]
+  },
+  {
+   "file": "IXI232-IOP-0898-Mask.nii.gz",
+   "vessel_frac": 0.0014728264419622444,
+   "centerline_vox_total": 4037,
+   "crop_centerline_mean": 1303.96,
+   "crop_centerline_p10_p50_p90": [
+    793.6,
+    1424.0,
+    1656.7
+   ]
+  },
+  {
+   "file": "IXI294-IOP-0868-Mask.nii.gz",
+   "vessel_frac": 0.002133992142810485,
+   "centerline_vox_total": 10732,
+   "crop_centerline_mean": 2439.28,
+   "crop_centerline_p10_p50_p90": [
+    1444.5,
+    2487.5,
+    3291.0
+   ]
+  },
+  {
+   "file": "IXI300-Guys-0880-Mask.nii.gz",
+   "vessel_frac": 0.0030310872395833332,
+   "centerline_vox_total": 9818,
+   "crop_centerline_mean": 1647.44,
+   "crop_centerline_p10_p50_p90": [
+    980.8000000000001,
+    1741.5,
+    2340.6
+   ]
+  },
+  {
+   "file": "IXI305-IOP-0871-Mask.nii.gz",
+   "vessel_frac": 0.002197190261564159,
+   "centerline_vox_total": 12127,
+   "crop_centerline_mean": 2507.96,
+   "crop_centerline_p10_p50_p90": [
+    1370.2,
+    2554.5,
+    3722.2
+   ]
+  },
+  {
+   "file": "IXI307-IOP-0872-Mask.nii.gz",
+   "vessel_frac": 0.0022907160120564,
+   "centerline_vox_total": 8564,
+   "crop_centerline_mean": 2407.72,
+   "crop_centerline_p10_p50_p90": [
+    782.7,
+    2708.5,
+    3338.9
+   ]
+  },
+  {
+   "file": "IXI310-IOP-0890-Mask.nii.gz",
+   "vessel_frac": 0.00205045118184448,
+   "centerline_vox_total": 10159,
+   "crop_centerline_mean": 2317.86,
+   "crop_centerline_p10_p50_p90": [
+    997.8000000000001,
+    2510.5,
+    3066.3
+   ]
+  },
+  {
+   "file": "IXI347-IOP-0927-Mask.nii.gz",
+   "vessel_frac": 0.0028921129494321736,
+   "centerline_vox_total": 14044,
+   "crop_centerline_mean": 3365.6,
+   "crop_centerline_p10_p50_p90": [
+    1987.3,
+    3602.0,
+    4290.0
+   ]
+  },
+  {
+   "file": "IXI372-IOP-0971-Mask.nii.gz",
+   "vessel_frac": 0.003032156621221877,
+   "centerline_vox_total": 15910,
+   "crop_centerline_mean": 3096.96,
+   "crop_centerline_p10_p50_p90": [
+    2246.6,
+    3082.0,
+    3878.3
+   ]
+  },
+  {
+   "file": "IXI388-IOP-0973-Mask.nii.gz",
+   "vessel_frac": 0.0022775351567238694,
+   "centerline_vox_total": 11596,
+   "crop_centerline_mean": 2071.0,
+   "crop_centerline_p10_p50_p90": [
+    1217.9,
+    2107.5,
+    2836.8
+   ]
+  },
+  {
+   "file": "IXI476-IOP-1140-Mask.nii.gz",
+   "vessel_frac": 0.001540247100211827,
+   "centerline_vox_total": 5058,
+   "crop_centerline_mean": 1415.2,
+   "crop_centerline_p10_p50_p90": [
+    990.7,
+    1506.5,
+    1814.4
+   ]
+  },
+  {
+   "file": "IXI561-IOP-1152-Mask.nii.gz",
+   "vessel_frac": 0.002125010498026371,
+   "centerline_vox_total": 9732,
+   "crop_centerline_mean": 2349.0,
+   "crop_centerline_p10_p50_p90": [
+    1532.7,
+    2415.0,
+    3021.7000000000003
+   ]
+  },
+  {
+   "file": "IXI563-IOP-1153-Mask.nii.gz",
+   "vessel_frac": 0.0020850946688689195,
+   "centerline_vox_total": 9508,
+   "crop_centerline_mean": 2261.6,
+   "crop_centerline_p10_p50_p90": [
+    1073.9,
+    2475.5,
+    3026.7
+   ]
+  },
+  {
+   "file": "IXI595-IOP-1159-Mask.nii.gz",
+   "vessel_frac": 0.0025879268030943514,
+   "centerline_vox_total": 12999,
+   "crop_centerline_mean": 2485.88,
+   "crop_centerline_p10_p50_p90": [
+    1622.2,
+    2506.5,
+    3442.4
+   ]
+  }
+ ],
+ "TopCoW_MR_VesselVerse": [
+  {
+   "file": "topcow_mr_002.nii.gz",
+   "vessel_frac": 0.0047980689979983514,
+   "centerline_vox_total": 8399,
+   "crop_centerline_mean": 1449.7,
+   "crop_centerline_p10_p50_p90": [
+    1099.9,
+    1464.0,
+    1779.3000000000002
+   ]
+  },
+  {
+   "file": "topcow_mr_012.nii.gz",
+   "vessel_frac": 0.005855428749649259,
+   "centerline_vox_total": 7089,
+   "crop_centerline_mean": 1592.88,
+   "crop_centerline_p10_p50_p90": [
+    1193.2,
+    1639.0,
+    1892.7
+   ]
+  },
+  {
+   "file": "topcow_mr_014.nii.gz",
+   "vessel_frac": 0.003859519027647683,
+   "centerline_vox_total": 4353,
+   "crop_centerline_mean": 1172.46,
+   "crop_centerline_p10_p50_p90": [
+    725.6,
+    1137.5,
+    1568.7
+   ]
+  },
+  {
+   "file": "topcow_mr_019.nii.gz",
+   "vessel_frac": 0.005221521770244329,
+   "centerline_vox_total": 7202,
+   "crop_centerline_mean": 1463.78,
+   "crop_centerline_p10_p50_p90": [
+    1202.7,
+    1462.0,
+    1801.6
+   ]
+  },
+  {
+   "file": "topcow_mr_020.nii.gz",
+   "vessel_frac": 0.004630627919137863,
+   "centerline_vox_total": 6623,
+   "crop_centerline_mean": 1494.18,
+   "crop_centerline_p10_p50_p90": [
+    1051.2,
+    1507.0,
+    1886.9
+   ]
+  },
+  {
+   "file": "topcow_mr_022.nii.gz",
+   "vessel_frac": 0.0055518332285367554,
+   "centerline_vox_total": 7463,
+   "crop_centerline_mean": 1573.5,
+   "crop_centerline_p10_p50_p90": [
+    1055.3,
+    1658.5,
+    2115.4
+   ]
+  },
+  {
+   "file": "topcow_mr_028.nii.gz",
+   "vessel_frac": 0.0064514911236979566,
+   "centerline_vox_total": 7417,
+   "crop_centerline_mean": 1503.26,
+   "crop_centerline_p10_p50_p90": [
+    1112.8,
+    1530.0,
+    2003.9
+   ]
+  },
+  {
+   "file": "topcow_mr_029.nii.gz",
+   "vessel_frac": 0.006759470815063174,
+   "centerline_vox_total": 8953,
+   "crop_centerline_mean": 1585.32,
+   "crop_centerline_p10_p50_p90": [
+    1149.4,
+    1575.0,
+    1973.7
+   ]
+  },
+  {
+   "file": "topcow_mr_036.nii.gz",
+   "vessel_frac": 0.007220068952417814,
+   "centerline_vox_total": 7688,
+   "crop_centerline_mean": 1617.98,
+   "crop_centerline_p10_p50_p90": [
+    1078.1,
+    1704.0,
+    1945.5
+   ]
+  },
+  {
+   "file": "topcow_mr_038.nii.gz",
+   "vessel_frac": 0.0048706382860785455,
+   "centerline_vox_total": 6169,
+   "crop_centerline_mean": 1367.78,
+   "crop_centerline_p10_p50_p90": [
+    962.8000000000001,
+    1489.5,
+    1724.5
+   ]
+  },
+  {
+   "file": "topcow_mr_044.nii.gz",
+   "vessel_frac": 0.004810955518472622,
+   "centerline_vox_total": 7622,
+   "crop_centerline_mean": 1547.24,
+   "crop_centerline_p10_p50_p90": [
+    1144.2,
+    1619.0,
+    1949.5
+   ]
+  },
+  {
+   "file": "topcow_mr_049.nii.gz",
+   "vessel_frac": 0.006463632675751611,
+   "centerline_vox_total": 8143,
+   "crop_centerline_mean": 1607.06,
+   "crop_centerline_p10_p50_p90": [
+    1200.9,
+    1647.5,
+    2033.3
+   ]
+  },
+  {
+   "file": "topcow_mr_053.nii.gz",
+   "vessel_frac": 0.005791567199749513,
+   "centerline_vox_total": 6931,
+   "crop_centerline_mean": 1580.66,
+   "crop_centerline_p10_p50_p90": [
+    1241.3000000000002,
+    1617.5,
+    1866.0000000000002
+   ]
+  },
+  {
+   "file": "topcow_mr_056.nii.gz",
+   "vessel_frac": 0.004318478842355893,
+   "centerline_vox_total": 5672,
+   "crop_centerline_mean": 1228.08,
+   "crop_centerline_p10_p50_p90": [
+    912.2,
+    1283.0,
+    1501.2
+   ]
+  },
+  {
+   "file": "topcow_mr_058.nii.gz",
+   "vessel_frac": 0.005479250924331612,
+   "centerline_vox_total": 7795,
+   "crop_centerline_mean": 1601.14,
+   "crop_centerline_p10_p50_p90": [
+    1154.0,
+    1632.5,
+    2047.1000000000001
+   ]
+  },
+  {
+   "file": "topcow_mr_064.nii.gz",
+   "vessel_frac": 0.007186294885206529,
+   "centerline_vox_total": 8094,
+   "crop_centerline_mean": 1551.54,
+   "crop_centerline_p10_p50_p90": [
+    1065.5,
+    1546.5,
+    2037.1000000000001
+   ]
+  },
+  {
+   "file": "topcow_mr_066.nii.gz",
+   "vessel_frac": 0.00614711339636861,
+   "centerline_vox_total": 6653,
+   "crop_centerline_mean": 1448.74,
+   "crop_centerline_p10_p50_p90": [
+    1137.8,
+    1491.5,
+    1729.1
+   ]
+  },
+  {
+   "file": "topcow_mr_076.nii.gz",
+   "vessel_frac": 0.005071663390008713,
+   "centerline_vox_total": 6652,
+   "crop_centerline_mean": 1372.2,
+   "crop_centerline_p10_p50_p90": [
+    513.6,
+    1533.5,
+    1810.0
+   ]
+  },
+  {
+   "file": "topcow_mr_081.nii.gz",
+   "vessel_frac": 0.004308322443085175,
+   "centerline_vox_total": 7509,
+   "crop_centerline_mean": 1284.42,
+   "crop_centerline_p10_p50_p90": [
+    925.8000000000001,
+    1308.5,
+    1613.8
+   ]
+  },
+  {
+   "file": "topcow_mr_089.nii.gz",
+   "vessel_frac": 0.0058991124948645475,
+   "centerline_vox_total": 6997,
+   "crop_centerline_mean": 1484.22,
+   "crop_centerline_p10_p50_p90": [
+    1064.0,
+    1478.5,
+    1897.7
+   ]
+  }
+ ],
+ "BraVa": [
+  {
+   "file": "sub-BG0001_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.0014806838801516508,
+   "centerline_vox_total": 9410,
+   "crop_centerline_mean": 1369.5,
+   "crop_centerline_p10_p50_p90": [
+    953.6,
+    1420.5,
+    1663.1
+   ]
+  },
+  {
+   "file": "sub-BG0003_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.001856405580336548,
+   "centerline_vox_total": 12295,
+   "crop_centerline_mean": 1450.5,
+   "crop_centerline_p10_p50_p90": [
+    1025.1,
+    1397.5,
+    1912.1
+   ]
+  },
+  {
+   "file": "sub-BG0008_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.0013338409966613023,
+   "centerline_vox_total": 9142,
+   "crop_centerline_mean": 1448.56,
+   "crop_centerline_p10_p50_p90": [
+    1001.9,
+    1457.0,
+    1930.7
+   ]
+  },
+  {
+   "file": "sub-BG0009_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.0016786111458126655,
+   "centerline_vox_total": 11553,
+   "crop_centerline_mean": 1513.94,
+   "crop_centerline_p10_p50_p90": [
+    1137.4,
+    1460.5,
+    1929.2
+   ]
+  },
+  {
+   "file": "sub-BG0010_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.001469457733098506,
+   "centerline_vox_total": 10108,
+   "crop_centerline_mean": 1281.28,
+   "crop_centerline_p10_p50_p90": [
+    945.8000000000001,
+    1264.5,
+    1585.0
+   ]
+  },
+  {
+   "file": "sub-BG0011_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.0018608453380298826,
+   "centerline_vox_total": 12142,
+   "crop_centerline_mean": 1664.76,
+   "crop_centerline_p10_p50_p90": [
+    1192.3,
+    1677.5,
+    2102.8
+   ]
+  },
+  {
+   "file": "sub-BH0003_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.0017164207945397406,
+   "centerline_vox_total": 10061,
+   "crop_centerline_mean": 1476.06,
+   "crop_centerline_p10_p50_p90": [
+    1009.5,
+    1521.0,
+    1835.3
+   ]
+  },
+  {
+   "file": "sub-BH0005_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.0017516737992086693,
+   "centerline_vox_total": 10765,
+   "crop_centerline_mean": 1586.02,
+   "crop_centerline_p10_p50_p90": [
+    1208.6000000000001,
+    1656.5,
+    1895.2000000000003
+   ]
+  },
+  {
+   "file": "sub-BH0008_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.0017814538742715806,
+   "centerline_vox_total": 10996,
+   "crop_centerline_mean": 1294.02,
+   "crop_centerline_p10_p50_p90": [
+    922.5,
+    1290.5,
+    1657.2
+   ]
+  },
+  {
+   "file": "sub-BH0012_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.0011877865219083433,
+   "centerline_vox_total": 7545,
+   "crop_centerline_mean": 1286.04,
+   "crop_centerline_p10_p50_p90": [
+    925.4,
+    1350.5,
+    1578.2
+   ]
+  },
+  {
+   "file": "sub-BH0014_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.0016870244546175947,
+   "centerline_vox_total": 9560,
+   "crop_centerline_mean": 1541.52,
+   "crop_centerline_p10_p50_p90": [
+    1106.4,
+    1595.5,
+    2032.5
+   ]
+  },
+  {
+   "file": "sub-BH0019_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.0016704827467689679,
+   "centerline_vox_total": 10048,
+   "crop_centerline_mean": 1427.86,
+   "crop_centerline_p10_p50_p90": [
+    1129.0,
+    1467.0,
+    1684.8
+   ]
+  },
+  {
+   "file": "sub-BH0021_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.001944724511680149,
+   "centerline_vox_total": 10635,
+   "crop_centerline_mean": 1579.16,
+   "crop_centerline_p10_p50_p90": [
+    1115.6,
+    1589.5,
+    1917.1000000000001
+   ]
+  },
+  {
+   "file": "sub-BH0026_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.00312908229821299,
+   "centerline_vox_total": 11157,
+   "crop_centerline_mean": 1555.86,
+   "crop_centerline_p10_p50_p90": [
+    1033.9,
+    1628.0,
+    1868.5
+   ]
+  },
+  {
+   "file": "sub-BH0027_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.0016558516685647642,
+   "centerline_vox_total": 11091,
+   "crop_centerline_mean": 1658.96,
+   "crop_centerline_p10_p50_p90": [
+    1155.2,
+    1668.0,
+    2284.4
+   ]
+  },
+  {
+   "file": "sub-BH0029_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.0016398116634663057,
+   "centerline_vox_total": 10623,
+   "crop_centerline_mean": 1562.08,
+   "crop_centerline_p10_p50_p90": [
+    1013.9000000000001,
+    1671.0,
+    2059.8
+   ]
+  },
+  {
+   "file": "sub-BH0030_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.0018564238373663016,
+   "centerline_vox_total": 11063,
+   "crop_centerline_mean": 1474.64,
+   "crop_centerline_p10_p50_p90": [
+    1158.1000000000001,
+    1509.0,
+    1789.1
+   ]
+  },
+  {
+   "file": "sub-BH0032_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.001739352063838697,
+   "centerline_vox_total": 10454,
+   "crop_centerline_mean": 1733.42,
+   "crop_centerline_p10_p50_p90": [
+    1248.9,
+    1815.5,
+    2102.5
+   ]
+  },
+  {
+   "file": "sub-BH0033_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.002253381156157811,
+   "centerline_vox_total": 13438,
+   "crop_centerline_mean": 1561.24,
+   "crop_centerline_p10_p50_p90": [
+    1217.8,
+    1521.0,
+    1883.4000000000003
+   ]
+  },
+  {
+   "file": "sub-BH0040_space-MRA_label-vessel_desc-swc_mask.nii.gz",
+   "vessel_frac": 0.001369802744728824,
+   "centerline_vox_total": 9189,
+   "crop_centerline_mean": 1454.0,
+   "crop_centerline_p10_p50_p90": [
+    1005.8,
+    1482.5,
+    1837.2
+   ]
+  }
+ ],
+ "TubeTK_centerlines": [
+  {
+   "file": "sub-Normal002_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.0012175065701507677,
+   "centerline_vox_total": 10122,
+   "crop_centerline_mean": 1824.44,
+   "crop_centerline_p10_p50_p90": [
+    1005.8000000000001,
+    1732.0,
+    2655.7000000000003
+   ]
+  },
+  {
+   "file": "sub-Normal004_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.0011374890497487205,
+   "centerline_vox_total": 10326,
+   "crop_centerline_mean": 1581.82,
+   "crop_centerline_p10_p50_p90": [
+    869.0,
+    1388.0,
+    2652.9
+   ]
+  },
+  {
+   "file": "sub-Normal007_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.0013907741251325556,
+   "centerline_vox_total": 11533,
+   "crop_centerline_mean": 1818.6,
+   "crop_centerline_p10_p50_p90": [
+    915.0,
+    1683.0,
+    2703.5
+   ]
+  },
+  {
+   "file": "sub-Normal016_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.0013996265387984693,
+   "centerline_vox_total": 10903,
+   "crop_centerline_mean": 1949.16,
+   "crop_centerline_p10_p50_p90": [
+    1118.4,
+    1946.0,
+    2732.3
+   ]
+  },
+  {
+   "file": "sub-Normal022_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.0013152519710452303,
+   "centerline_vox_total": 11501,
+   "crop_centerline_mean": 2055.02,
+   "crop_centerline_p10_p50_p90": [
+    915.0,
+    2090.0,
+    2870.4
+   ]
+  },
+  {
+   "file": "sub-Normal026_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.0016988104569136428,
+   "centerline_vox_total": 12009,
+   "crop_centerline_mean": 1962.84,
+   "crop_centerline_p10_p50_p90": [
+    1220.7,
+    1969.5,
+    2793.7000000000003
+   ]
+  },
+  {
+   "file": "sub-Normal041_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.00180882013924109,
+   "centerline_vox_total": 9126,
+   "crop_centerline_mean": 1599.16,
+   "crop_centerline_p10_p50_p90": [
+    934.3000000000001,
+    1636.5,
+    2260.2000000000003
+   ]
+  },
+  {
+   "file": "sub-Normal046_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.0012817787818709945,
+   "centerline_vox_total": 11271,
+   "crop_centerline_mean": 1742.22,
+   "crop_centerline_p10_p50_p90": [
+    1182.7,
+    1688.5,
+    2442.6000000000004
+   ]
+  },
+  {
+   "file": "sub-Normal053_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.0015439162709207433,
+   "centerline_vox_total": 11527,
+   "crop_centerline_mean": 1648.32,
+   "crop_centerline_p10_p50_p90": [
+    1140.3,
+    1600.0,
+    2198.1
+   ]
+  },
+  {
+   "file": "sub-Normal054_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.0018797316612107519,
+   "centerline_vox_total": 14415,
+   "crop_centerline_mean": 2011.22,
+   "crop_centerline_p10_p50_p90": [
+    1429.1,
+    2000.5,
+    2600.2000000000003
+   ]
+  },
+  {
+   "file": "sub-Normal056_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.001226266771174328,
+   "centerline_vox_total": 9409,
+   "crop_centerline_mean": 1517.9,
+   "crop_centerline_p10_p50_p90": [
+    1073.4,
+    1469.5,
+    2038.2
+   ]
+  },
+  {
+   "file": "sub-Normal058_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.0013972520632578726,
+   "centerline_vox_total": 10023,
+   "crop_centerline_mean": 2208.16,
+   "crop_centerline_p10_p50_p90": [
+    1453.3,
+    2355.5,
+    2919.8
+   ]
+  },
+  {
+   "file": "sub-Normal060_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.001301189543086357,
+   "centerline_vox_total": 10512,
+   "crop_centerline_mean": 1552.16,
+   "crop_centerline_p10_p50_p90": [
+    939.1,
+    1515.5,
+    2046.2
+   ]
+  },
+  {
+   "file": "sub-Normal062_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.0022669786527732953,
+   "centerline_vox_total": 10512,
+   "crop_centerline_mean": 1764.14,
+   "crop_centerline_p10_p50_p90": [
+    1115.0,
+    1784.0,
+    2394.1
+   ]
+  },
+  {
+   "file": "sub-Normal073_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.0010854580663008898,
+   "centerline_vox_total": 8515,
+   "crop_centerline_mean": 1426.18,
+   "crop_centerline_p10_p50_p90": [
+    622.9,
+    1541.0,
+    1994.8
+   ]
+  },
+  {
+   "file": "sub-Normal074_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.0014447646272303933,
+   "centerline_vox_total": 12610,
+   "crop_centerline_mean": 1961.7,
+   "crop_centerline_p10_p50_p90": [
+    1415.1000000000001,
+    1943.5,
+    2784.2
+   ]
+  },
+  {
+   "file": "sub-Normal077_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.0013285305915441007,
+   "centerline_vox_total": 10895,
+   "crop_centerline_mean": 1953.46,
+   "crop_centerline_p10_p50_p90": [
+    1383.5,
+    2026.5,
+    2493.2
+   ]
+  },
+  {
+   "file": "sub-Normal090_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.0010436396329936834,
+   "centerline_vox_total": 9228,
+   "crop_centerline_mean": 1562.22,
+   "crop_centerline_p10_p50_p90": [
+    1055.7,
+    1549.0,
+    2038.4
+   ]
+  },
+  {
+   "file": "sub-Normal099_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.0012061350122958207,
+   "centerline_vox_total": 6261,
+   "crop_centerline_mean": 1171.94,
+   "crop_centerline_p10_p50_p90": [
+    762.5,
+    1271.5,
+    1486.3
+   ]
+  },
+  {
+   "file": "sub-Normal100_space-MRA_label-vessel_desc-skwerer_mask.nii.gz",
+   "vessel_frac": 0.0017211799887761666,
+   "centerline_vox_total": 11728,
+   "crop_centerline_mean": 1703.18,
+   "crop_centerline_p10_p50_p90": [
+    1038.8,
+    1694.0,
+    2326.0
+   ]
+  }
+ ],
+ "TopBrain_MR_arteries": [
+  {
+   "file": "topcow_mr_001.nii.gz",
+   "vessel_frac": 0.0045437581379503605,
+   "centerline_vox_total": 3717,
+   "crop_centerline_mean": 1158.98,
+   "crop_centerline_p10_p50_p90": [
+    811.8,
+    1212.0,
+    1443.2
+   ]
+  },
+  {
+   "file": "topcow_mr_002.nii.gz",
+   "vessel_frac": 0.003616481793737647,
+   "centerline_vox_total": 3525,
+   "crop_centerline_mean": 1149.64,
+   "crop_centerline_p10_p50_p90": [
+    676.2,
+    1213.0,
+    1553.0
+   ]
+  },
+  {
+   "file": "topcow_mr_003.nii.gz",
+   "vessel_frac": 0.003939854287822165,
+   "centerline_vox_total": 3286,
+   "crop_centerline_mean": 988.7,
+   "crop_centerline_p10_p50_p90": [
+    736.1,
+    1048.0,
+    1207.4
+   ]
+  },
+  {
+   "file": "topcow_mr_005.nii.gz",
+   "vessel_frac": 0.0029945292385237477,
+   "centerline_vox_total": 2684,
+   "crop_centerline_mean": 871.44,
+   "crop_centerline_p10_p50_p90": [
+    570.5,
+    803.0,
+    1247.0
+   ]
+  },
+  {
+   "file": "topcow_mr_006.nii.gz",
+   "vessel_frac": 0.00340447189833519,
+   "centerline_vox_total": 2882,
+   "crop_centerline_mean": 1186.42,
+   "crop_centerline_p10_p50_p90": [
+    815.7,
+    1226.0,
+    1500.0
+   ]
+  },
+  {
+   "file": "topcow_mr_007.nii.gz",
+   "vessel_frac": 0.004279107285980138,
+   "centerline_vox_total": 3292,
+   "crop_centerline_mean": 1107.8,
+   "crop_centerline_p10_p50_p90": [
+    536.8000000000001,
+    1249.0,
+    1502.5
+   ]
+  },
+  {
+   "file": "topcow_mr_008.nii.gz",
+   "vessel_frac": 0.0037342844487501746,
+   "centerline_vox_total": 3197,
+   "crop_centerline_mean": 1142.18,
+   "crop_centerline_p10_p50_p90": [
+    863.2,
+    1156.5,
+    1460.8
+   ]
+  },
+  {
+   "file": "topcow_mr_011.nii.gz",
+   "vessel_frac": 0.0043920360997621805,
+   "centerline_vox_total": 3938,
+   "crop_centerline_mean": 1311.0,
+   "crop_centerline_p10_p50_p90": [
+    962.5,
+    1279.5,
+    1698.8000000000002
+   ]
+  },
+  {
+   "file": "topcow_mr_012.nii.gz",
+   "vessel_frac": 0.005499637618388029,
+   "centerline_vox_total": 4219,
+   "crop_centerline_mean": 1224.98,
+   "crop_centerline_p10_p50_p90": [
+    887.0,
+    1180.5,
+    1631.5
+   ]
+  },
+  {
+   "file": "topcow_mr_013.nii.gz",
+   "vessel_frac": 0.002969649964871446,
+   "centerline_vox_total": 2065,
+   "crop_centerline_mean": 850.96,
+   "crop_centerline_p10_p50_p90": [
+    555.0,
+    809.0,
+    1137.1
+   ]
+  },
+  {
+   "file": "topcow_mr_014.nii.gz",
+   "vessel_frac": 0.0032654324503739707,
+   "centerline_vox_total": 2269,
+   "crop_centerline_mean": 886.4,
+   "crop_centerline_p10_p50_p90": [
+    518.0,
+    856.5,
+    1255.3
+   ]
+  },
+  {
+   "file": "topcow_mr_015.nii.gz",
+   "vessel_frac": 0.0035819248618877515,
+   "centerline_vox_total": 2375,
+   "crop_centerline_mean": 850.84,
+   "crop_centerline_p10_p50_p90": [
+    592.1,
+    816.0,
+    1173.8
+   ]
+  },
+  {
+   "file": "topcow_mr_016.nii.gz",
+   "vessel_frac": 0.0025782296416693,
+   "centerline_vox_total": 2258,
+   "crop_centerline_mean": 1024.02,
+   "crop_centerline_p10_p50_p90": [
+    678.2,
+    1062.0,
+    1219.1
+   ]
+  },
+  {
+   "file": "topcow_mr_017.nii.gz",
+   "vessel_frac": 0.003992822872442362,
+   "centerline_vox_total": 2930,
+   "crop_centerline_mean": 711.56,
+   "crop_centerline_p10_p50_p90": [
+    426.2,
+    683.5,
+    1038.5
+   ]
+  },
+  {
+   "file": "topcow_mr_018.nii.gz",
+   "vessel_frac": 0.004567217048404277,
+   "centerline_vox_total": 3406,
+   "crop_centerline_mean": 995.98,
+   "crop_centerline_p10_p50_p90": [
+    651.6,
+    969.5,
+    1339.7
+   ]
+  },
+  {
+   "file": "topcow_mr_020.nii.gz",
+   "vessel_frac": 0.003566722349461187,
+   "centerline_vox_total": 3132,
+   "crop_centerline_mean": 1153.3,
+   "crop_centerline_p10_p50_p90": [
+    675.1,
+    1193.0,
+    1604.3000000000002
+   ]
+  },
+  {
+   "file": "topcow_mr_021.nii.gz",
+   "vessel_frac": 0.005554284575675167,
+   "centerline_vox_total": 3524,
+   "crop_centerline_mean": 1094.78,
+   "crop_centerline_p10_p50_p90": [
+    553.1,
+    1160.0,
+    1492.5
+   ]
+  },
+  {
+   "file": "topcow_mr_022.nii.gz",
+   "vessel_frac": 0.004806249239901362,
+   "centerline_vox_total": 3792,
+   "crop_centerline_mean": 1116.36,
+   "crop_centerline_p10_p50_p90": [
+    587.0,
+    1076.0,
+    1698.8
+   ]
+  },
+  {
+   "file": "topcow_mr_023.nii.gz",
+   "vessel_frac": 0.002503640378059656,
+   "centerline_vox_total": 2740,
+   "crop_centerline_mean": 832.68,
+   "crop_centerline_p10_p50_p90": [
+    631.5,
+    815.5,
+    1122.7
+   ]
+  },
+  {
+   "file": "topcow_mr_027.nii.gz",
+   "vessel_frac": 0.004125470518175857,
+   "centerline_vox_total": 3966,
+   "crop_centerline_mean": 1177.12,
+   "crop_centerline_p10_p50_p90": [
+    786.9,
+    1226.0,
+    1535.3
+   ]
+  }
+ ],
+ "TopBrain_CT_arteries": [
+  {
+   "file": "topcow_ct_001.nii.gz",
+   "vessel_frac": 0.0019543291036954835,
+   "centerline_vox_total": 2213,
+   "crop_centerline_mean": 736.52,
+   "crop_centerline_p10_p50_p90": [
+    402.6,
+    661.5,
+    1049.4
+   ]
+  },
+  {
+   "file": "topcow_ct_002.nii.gz",
+   "vessel_frac": 0.0024477654090107994,
+   "centerline_vox_total": 2667,
+   "crop_centerline_mean": 882.04,
+   "crop_centerline_p10_p50_p90": [
+    393.9,
+    866.0,
+    1292.0
+   ]
+  },
+  {
+   "file": "topcow_ct_003.nii.gz",
+   "vessel_frac": 0.002446851109142881,
+   "centerline_vox_total": 2864,
+   "crop_centerline_mean": 580.18,
+   "crop_centerline_p10_p50_p90": [
+    272.9,
+    495.5,
+    932.4000000000001
+   ]
+  },
+  {
+   "file": "topcow_ct_004.nii.gz",
+   "vessel_frac": 0.002247593506058139,
+   "centerline_vox_total": 3658,
+   "crop_centerline_mean": 963.12,
+   "crop_centerline_p10_p50_p90": [
+    497.0,
+    1044.5,
+    1315.7000000000003
+   ]
+  },
+  {
+   "file": "topcow_ct_005.nii.gz",
+   "vessel_frac": 0.0027586968052686544,
+   "centerline_vox_total": 2773,
+   "crop_centerline_mean": 904.4,
+   "crop_centerline_p10_p50_p90": [
+    577.8,
+    879.5,
+    1135.5
+   ]
+  },
+  {
+   "file": "topcow_ct_006.nii.gz",
+   "vessel_frac": 0.0013042744396417033,
+   "centerline_vox_total": 2167,
+   "crop_centerline_mean": 609.06,
+   "crop_centerline_p10_p50_p90": [
+    248.0,
+    526.0,
+    1000.8000000000001
+   ]
+  },
+  {
+   "file": "topcow_ct_010.nii.gz",
+   "vessel_frac": 0.0016602436770503997,
+   "centerline_vox_total": 1729,
+   "crop_centerline_mean": 644.76,
+   "crop_centerline_p10_p50_p90": [
+    413.3,
+    620.0,
+    895.5
+   ]
+  },
+  {
+   "file": "topcow_ct_012.nii.gz",
+   "vessel_frac": 0.002116644339540657,
+   "centerline_vox_total": 3400,
+   "crop_centerline_mean": 984.48,
+   "crop_centerline_p10_p50_p90": [
+    771.6,
+    972.5,
+    1240.8
+   ]
+  },
+  {
+   "file": "topcow_ct_013.nii.gz",
+   "vessel_frac": 0.0017997924052428878,
+   "centerline_vox_total": 1780,
+   "crop_centerline_mean": 586.8,
+   "crop_centerline_p10_p50_p90": [
+    280.90000000000003,
+    606.0,
+    916.1
+   ]
+  },
+  {
+   "file": "topcow_ct_014.nii.gz",
+   "vessel_frac": 0.0021647895640991154,
+   "centerline_vox_total": 3436,
+   "crop_centerline_mean": 849.24,
+   "crop_centerline_p10_p50_p90": [
+    388.7,
+    913.5,
+    1205.6000000000001
+   ]
+  },
+  {
+   "file": "topcow_ct_015.nii.gz",
+   "vessel_frac": 0.0025418416504626095,
+   "centerline_vox_total": 3408,
+   "crop_centerline_mean": 902.76,
+   "crop_centerline_p10_p50_p90": [
+    591.7,
+    1000.5,
+    1208.2
+   ]
+  },
+  {
+   "file": "topcow_ct_016.nii.gz",
+   "vessel_frac": 0.0019105673867578629,
+   "centerline_vox_total": 2325,
+   "crop_centerline_mean": 683.52,
+   "crop_centerline_p10_p50_p90": [
+    270.3,
+    729.0,
+    948.6000000000001
+   ]
+  },
+  {
+   "file": "topcow_ct_017.nii.gz",
+   "vessel_frac": 0.0014883710435194758,
+   "centerline_vox_total": 2393,
+   "crop_centerline_mean": 617.92,
+   "crop_centerline_p10_p50_p90": [
+    297.2,
+    706.0,
+    865.3000000000001
+   ]
+  },
+  {
+   "file": "topcow_ct_020.nii.gz",
+   "vessel_frac": 0.0019092730725248901,
+   "centerline_vox_total": 2483,
+   "crop_centerline_mean": 690.02,
+   "crop_centerline_p10_p50_p90": [
+    322.8,
+    732.0,
+    1003.1
+   ]
+  },
+  {
+   "file": "topcow_ct_021.nii.gz",
+   "vessel_frac": 0.0031005688208142587,
+   "centerline_vox_total": 3474,
+   "crop_centerline_mean": 901.76,
+   "crop_centerline_p10_p50_p90": [
+    301.5,
+    1034.0,
+    1239.1000000000001
+   ]
+  },
+  {
+   "file": "topcow_ct_022.nii.gz",
+   "vessel_frac": 0.003305287878151867,
+   "centerline_vox_total": 4283,
+   "crop_centerline_mean": 920.24,
+   "crop_centerline_p10_p50_p90": [
+    522.0,
+    866.5,
+    1330.3
+   ]
+  },
+  {
+   "file": "topcow_ct_023.nii.gz",
+   "vessel_frac": 0.0015924892685456066,
+   "centerline_vox_total": 2674,
+   "crop_centerline_mean": 679.02,
+   "crop_centerline_p10_p50_p90": [
+    409.90000000000003,
+    736.0,
+    896.0
+   ]
+  },
+  {
+   "file": "topcow_ct_025.nii.gz",
+   "vessel_frac": 0.0024515120229345053,
+   "centerline_vox_total": 3245,
+   "crop_centerline_mean": 967.54,
+   "crop_centerline_p10_p50_p90": [
+    629.2,
+    992.5,
+    1222.0
+   ]
+  },
+  {
+   "file": "topcow_ct_026.nii.gz",
+   "vessel_frac": 0.002475823811889386,
+   "centerline_vox_total": 3201,
+   "crop_centerline_mean": 929.42,
+   "crop_centerline_p10_p50_p90": [
+    606.2,
+    977.0,
+    1169.8
+   ]
+  },
+  {
+   "file": "topcow_ct_027.nii.gz",
+   "vessel_frac": 0.0014363358932647323,
+   "centerline_vox_total": 2229,
+   "crop_centerline_mean": 580.84,
+   "crop_centerline_p10_p50_p90": [
+    339.3,
+    595.5,
+    844.3000000000001
+   ]
+  }
+ ],
+ "CAS": [
+  {
+   "file": "001.nii.gz",
+   "vessel_frac": 0.0029871525037270894,
+   "centerline_vox_total": 5857,
+   "crop_centerline_mean": 1609.0,
+   "crop_centerline_p10_p50_p90": [
+    855.9,
+    1691.5,
+    2094.5
+   ]
+  },
+  {
+   "file": "003.nii.gz",
+   "vessel_frac": 0.0020697107572310693,
+   "centerline_vox_total": 4273,
+   "crop_centerline_mean": 1636.2,
+   "crop_centerline_p10_p50_p90": [
+    1178.3,
+    1732.5,
+    2030.8
+   ]
+  },
+  {
+   "file": "013.nii.gz",
+   "vessel_frac": 0.0025156464334705076,
+   "centerline_vox_total": 5509,
+   "crop_centerline_mean": 1556.28,
+   "crop_centerline_p10_p50_p90": [
+    1057.3,
+    1546.5,
+    2048.3
+   ]
+  },
+  {
+   "file": "018.nii.gz",
+   "vessel_frac": 0.0031159340376570575,
+   "centerline_vox_total": 7339,
+   "crop_centerline_mean": 2150.66,
+   "crop_centerline_p10_p50_p90": [
+    790.1,
+    2161.5,
+    3262.0
+   ]
+  },
+  {
+   "file": "019.nii.gz",
+   "vessel_frac": 0.004023575667222076,
+   "centerline_vox_total": 9259,
+   "crop_centerline_mean": 2237.2,
+   "crop_centerline_p10_p50_p90": [
+    1384.3000000000002,
+    2164.0,
+    3205.2000000000003
+   ]
+  },
+  {
+   "file": "020.nii.gz",
+   "vessel_frac": 0.003569236165921249,
+   "centerline_vox_total": 5364,
+   "crop_centerline_mean": 1353.16,
+   "crop_centerline_p10_p50_p90": [
+    764.3,
+    1449.0,
+    1848.8
+   ]
+  },
+  {
+   "file": "039.nii.gz",
+   "vessel_frac": 0.0025052862719583606,
+   "centerline_vox_total": 4376,
+   "crop_centerline_mean": 1352.84,
+   "crop_centerline_p10_p50_p90": [
+    850.2,
+    1444.0,
+    1690.3
+   ]
+  },
+  {
+   "file": "044.nii.gz",
+   "vessel_frac": 0.0022033960355179252,
+   "centerline_vox_total": 3919,
+   "crop_centerline_mean": 1129.44,
+   "crop_centerline_p10_p50_p90": [
+    793.7,
+    1192.0,
+    1417.2
+   ]
+  },
+  {
+   "file": "060.nii.gz",
+   "vessel_frac": 0.0021863189720332577,
+   "centerline_vox_total": 3708,
+   "crop_centerline_mean": 1336.12,
+   "crop_centerline_p10_p50_p90": [
+    960.8,
+    1472.5,
+    1653.4
+   ]
+  },
+  {
+   "file": "064.nii.gz",
+   "vessel_frac": 0.0027806832037799117,
+   "centerline_vox_total": 3364,
+   "crop_centerline_mean": 1111.0,
+   "crop_centerline_p10_p50_p90": [
+    703.9,
+    1167.0,
+    1424.3
+   ]
+  },
+  {
+   "file": "075.nii.gz",
+   "vessel_frac": 0.0022519283390429407,
+   "centerline_vox_total": 4167,
+   "crop_centerline_mean": 1196.4,
+   "crop_centerline_p10_p50_p90": [
+    895.8,
+    1208.5,
+    1477.8
+   ]
+  },
+  {
+   "file": "076.nii.gz",
+   "vessel_frac": 0.0020788334472545,
+   "centerline_vox_total": 3463,
+   "crop_centerline_mean": 1098.66,
+   "crop_centerline_p10_p50_p90": [
+    694.7,
+    1168.5,
+    1429.2
+   ]
+  },
+  {
+   "file": "077.nii.gz",
+   "vessel_frac": 0.002526970384113241,
+   "centerline_vox_total": 4985,
+   "crop_centerline_mean": 1780.4,
+   "crop_centerline_p10_p50_p90": [
+    938.8000000000001,
+    1780.5,
+    2308.1
+   ]
+  },
+  {
+   "file": "084.nii.gz",
+   "vessel_frac": 0.0031933383109341296,
+   "centerline_vox_total": 4024,
+   "crop_centerline_mean": 1158.44,
+   "crop_centerline_p10_p50_p90": [
+    674.4,
+    1124.5,
+    1608.2
+   ]
+  },
+  {
+   "file": "086.nii.gz",
+   "vessel_frac": 0.00304937098126922,
+   "centerline_vox_total": 4255,
+   "crop_centerline_mean": 1348.1,
+   "crop_centerline_p10_p50_p90": [
+    937.0,
+    1402.5,
+    1703.0
+   ]
+  },
+  {
+   "file": "087.nii.gz",
+   "vessel_frac": 0.002283504399802974,
+   "centerline_vox_total": 5112,
+   "crop_centerline_mean": 1356.3,
+   "crop_centerline_p10_p50_p90": [
+    914.0,
+    1404.5,
+    1779.2
+   ]
+  },
+  {
+   "file": "089.nii.gz",
+   "vessel_frac": 0.0035723497732426304,
+   "centerline_vox_total": 4117,
+   "crop_centerline_mean": 1067.1,
+   "crop_centerline_p10_p50_p90": [
+    681.2,
+    1134.0,
+    1308.1
+   ]
+  },
+  {
+   "file": "090.nii.gz",
+   "vessel_frac": 0.002710192612345254,
+   "centerline_vox_total": 3755,
+   "crop_centerline_mean": 1023.4,
+   "crop_centerline_p10_p50_p90": [
+    804.9,
+    995.0,
+    1351.6
+   ]
+  },
+  {
+   "file": "096.nii.gz",
+   "vessel_frac": 0.0037748199588477365,
+   "centerline_vox_total": 5636,
+   "crop_centerline_mean": 1743.78,
+   "crop_centerline_p10_p50_p90": [
+    1303.0,
+    1787.0,
+    2136.3
+   ]
+  },
+  {
+   "file": "099.nii.gz",
+   "vessel_frac": 0.002174425582990398,
+   "centerline_vox_total": 3866,
+   "crop_centerline_mean": 1363.98,
+   "crop_centerline_p10_p50_p90": [
+    1059.7,
+    1426.0,
+    1632.1000000000001
+   ]
+  }
+ ]
+}
