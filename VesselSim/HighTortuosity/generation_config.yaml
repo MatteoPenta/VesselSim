@@ -10,3 +10,25 @@ final_patch_size: 96
 patch_extraction_attempts: 50
 
 
+
+# Forest mode: several trees per volume, filled to target centerline densities for vesselFM's RandVesselOverlayd.
+# Run with forest.enabled: true (or a copy of this file): python 2_vessel_builder.py [--calibrate N]
+forest:
+  enabled: false
+  volume_size: [250, 250, 250]
+  n_volumes: 25                      # scaling arms later: 100, 400
+  reference: density_reference_murine.json
+  density_fractions: {murine_1x: 1.0, murine_0.5x: 0.5, murine_0.25x: 0.25}
+  calibration_factor: 1.4499         # graph length per skeleton voxel, from --calibrate 16 (range 1.433-1.465)
+  prefix_rule: reach                 # reach: shortest prefix reaching the target; closest: nearest prefix
+  parameters_dir: vessel_parameters/toy
+  confine_to_volume: true
+  root_grid_cells: [4, 4, 4]
+  root_margin_vox: 10
+  min_root_spacing_vox: 20
+  min_tree_segments: 5
+  max_trees: 500
+  max_failed_roots: 200
+  base_seed: 0
+  n_workers: 8
+  output_root: overlay_volumes
