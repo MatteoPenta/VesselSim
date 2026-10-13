@@ -77,6 +77,18 @@ python 2_vessel_builder.py --config generation_config_toy.yaml
 python 6_graph_stats.py --dir toy_samples
 ```
 
+## Forest mode (overlay volumes)
+*Added in this fork.* Grows many trees into one 250³ volume (using `vessel_parameters/forest`) until a target centerline
+density is reached. The targets are fractions of the murine overlay reference in `density_reference_murine.json`. The
+lower-density presets are prefixes of the same trees, so they differ only in density. Settings are in the `forest`
+block of `generation_config.yaml`:
+```
+python 2_vessel_builder.py --forest --calibrate 16   # graph length per skeleton voxel, set as forest.calibration_factor
+python 2_vessel_builder.py --forest                  # writes overlay_volumes/<preset>/{masks,graphs}
+python verify_overlay_volumes.py --root overlay_volumes
+```
+`measure_density.py` and `measure_morphology.py` compare outputs with the murine and IXI references.
+
 # 3. Extracting Patches
 [Patch extraction](3_extract_patches.py) takes the initial 160 × 160 × 160 voxel volumes and extracts 96 × 96 × 96 voxel 
 patches that have passed an automatic quality control based on criteria of flow continuity, vessel integrity (no small 

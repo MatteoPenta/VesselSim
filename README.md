@@ -15,6 +15,19 @@ clinical scans without prior domain knowledge.
 For more details, please refer to our [manuscript](https://arxiv.org/abs/2605.26277), our 
 [publicly available data](https://osf.io/8n5wu/overview), and the full [project page](https://healthx-lab.github.io/VesselSim).
 
+# Additions in this fork
+This fork builds on VesselSim up to upstream commit `a873e7e`. The vessel generator, its parameters and the published
+data are the work of the VesselSim authors; please cite their [manuscript](https://arxiv.org/abs/2605.26277).
+The additions below are all in `VesselSim/HighTortuosity/` and are opt-in, so the original generation is unchanged by default:
+- **Graph export**: each builder mask is saved with its vessel tree (`raw_tree.json`, `canonical_graph.json`), with a
+  browser viewer (`5_visualize_graph.py`, [GRAPH_VIEWER.md](VesselSim/HighTortuosity/GRAPH_VIEWER.md)).
+- **Builder options**: asymmetric Murray bifurcations, volume confinement and per-sample seeds.
+- **Forest mode**: multi-tree 250³ volumes filled to target centerline densities, with nested density presets, for
+  vesselFM's vessel-overlay augmentation.
+- **Measurement tools**: `measure_density.py`, `measure_morphology.py`, `verify_overlay_volumes.py` and `6_graph_stats.py`.
+
+See the [high tortuosity README](VesselSim/HighTortuosity/README.md) for usage.
+
 # Installation
 First, set up a conda environment and install dependencies:
 ```
