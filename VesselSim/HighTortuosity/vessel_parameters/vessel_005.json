@@ -1,0 +1,28 @@
+{
+  "anatomical_context": "Fine distal intracranial arterial arborization visible in high-resolution 7T TOF-MRA, characterized by thin vessels, progressive caliber reduction, hierarchical bifurcations, moderate branching density, and gently curved trajectories.",
+  "root_geometry": {
+    "origin_voxel": [80, 80, 35],
+    "initial_direction": [0.0, 0.0, 1.0],
+    "initial_radius": 2.6
+  },
+  "branching_model": {
+    "max_depth": 7,
+    "bifurcation_probability": 0.38,
+    "bifurcation_depth_decay": 0.92,
+    "bifurcation_angle": 27.0,
+    "termination_factor": 0.13,
+    "segment_length_vox": {
+      "min": 6,
+      "max": 13
+    },
+    "max_total_segments": 650
+  },
+  "radius_model": {
+    "min_radius_vox": 0.6,
+    "radius_decay_factor": 0.8
+  },
+  "tortuosity_model": {
+    "segment_max_curvature": 15,
+    "collision_jitter_scale": 0.4
+  }
+}
