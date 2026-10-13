@@ -4,7 +4,7 @@
   preset from its saved graph JSON reproduces that mask exactly
 - hashes: SHA-256 of every mask, to compare two runs with the same seeds (--compare <other output_root>)
 - graph-mask agreement (--agreement N): on the first N volumes of the densest preset, every skeleton component
-  must lie within --tolerance voxels of a graph centerline point
+  must lie within --tolerance voxels of a graph centerline point (default: largest vessel radius + 0.5)
 """
 import argparse
 import hashlib
@@ -36,8 +36,16 @@ def mask_hashes(root):
             for p in sorted(Path(root).glob("*/masks/*.npy"))}
 
 
-def load_trees(root, preset, name):
-    return json.loads((Path(root) / preset / "graphs" / f"{name}_forest.json").read_text())["trees"]
+def load_forest(root, preset, name):
+    return json.loads((Path(root) / preset / "graphs" / f"{name}_forest.json").read_text())
+
+
+def redraw(forest, shape):
+    # Graph coordinates are in the growth volume; the mask is its centre, cropped by crop_offset_vox.
+    meta = forest["metadata"]
+    o = meta.get("crop_offset_vox", 0)
+    grown = vessel_builder.rasterize_graphs([t["graph"] for t in forest["trees"]], tuple(meta.get("growth_shape", shape))) > 0
+    return grown[o:o + shape[0], o:o + shape[1], o:o + shape[2]]
 
 
 def check_nesting(root, presets):
@@ -49,8 +57,7 @@ def check_nesting(root, presets):
         for (lo_name, lo), (hi_name, hi) in zip(zip(presets, masks), zip(presets[1:], masks[1:])):
             if np.any(lo & ~hi):
                 subset_failures.append(f"{name}: {lo_name} not within {hi_name}")
-        trees = load_trees(root, densest, name)
-        redrawn = vessel_builder.rasterize_graphs([t["graph"] for t in trees], masks[-1].shape) > 0
+        redrawn = redraw(load_forest(root, densest, name), masks[-1].shape)
         if not np.array_equal(redrawn, masks[-1]):
             raster_failures.append(f"{name}: {int((redrawn != masks[-1]).sum())} voxels differ")
     return names, subset_failures, raster_failures
@@ -58,17 +65,23 @@ def check_nesting(root, presets):
 
 def check_agreement(root, preset, name, tolerance):
     mask = np.load(Path(root) / preset / "masks" / f"{name}.npy")
-    trees = load_trees(root, preset, name)
-    centerline = np.zeros(mask.shape, dtype=bool)
-    for t in trees:
+    forest = load_forest(root, preset, name)
+    o = forest["metadata"].get("crop_offset_vox", 0)
+    # Distances in the growth frame, so a vessel whose centerline runs just outside the crop still counts.
+    growth = tuple(forest["metadata"].get("growth_shape", mask.shape))
+    centerline = np.zeros(growth, dtype=bool)
+    for t in forest["trees"]:
         for e in t["graph"]["edges"]:
-            idx = np.clip(np.rint(np.asarray(e["points"])).astype(int), 0, np.array(mask.shape) - 1)
+            idx = np.clip(np.rint(np.asarray(e["points"])).astype(int), 0, np.array(growth) - 1)
             centerline[tuple(idx.T)] = True
-    dist = ndi.distance_transform_edt(~centerline)
+    dist = ndi.distance_transform_edt(~centerline)[o:o + mask.shape[0], o:o + mask.shape[1], o:o + mask.shape[2]]
+    if tolerance is None:
+        # A skeleton can sit up to one vessel radius off the centerline where a crop face clips a thick vessel.
+        tolerance = max(r for t in forest["trees"] for e in t["graph"]["edges"] for r in e["radii"]) + 0.5
     skel = skeleton_of(mask)
     labels, n = ndi.label(skel, structure=np.ones((3, 3, 3)))
     near = ndi.minimum(dist, labels, index=np.arange(1, n + 1)) if n else np.array([])
-    return {"volume": name, "skeleton_components": int(n),
+    return {"volume": name, "tolerance": float(tolerance), "skeleton_components": int(n),
             "components_off_graph": int((near > tolerance).sum()),
             "skeleton_vox_within_tolerance": float((dist[skel] <= tolerance).mean()),
             "max_component_distance": float(near.max()) if n else 0.0}
@@ -79,7 +92,8 @@ def main():
     parser.add_argument("--root", default="overlay_volumes", help="Forest output_root")
     parser.add_argument("--compare", default=None, help="Second output_root generated with the same seeds")
     parser.add_argument("--agreement", type=int, default=2, help="Volumes for the graph-mask spot check")
-    parser.add_argument("--tolerance", type=float, default=2.0, help="Max skeleton-to-centerline distance (vox)")
+    parser.add_argument("--tolerance", type=float, default=None,
+                        help="Max skeleton-to-centerline distance (vox), default largest vessel radius + 0.5")
     args = parser.parse_args()
 
     presets = presets_by_density(args.root)

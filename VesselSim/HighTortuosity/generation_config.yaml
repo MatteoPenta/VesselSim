@@ -19,14 +19,18 @@ forest:
   n_volumes: 25                      # scaling arms later: 100, 400
   reference: density_reference_murine.json
   density_fractions: {murine_1x: 1.0, murine_0.5x: 0.5, murine_0.25x: 0.25}
-  calibration_factor: 1.4499         # graph length per skeleton voxel, from --calibrate 16 (range 1.433-1.465)
+  calibration_factor: 0.9565         # graph length per skeleton voxel in the output crop, from --calibrate 16
   prefix_rule: reach                 # reach: shortest prefix reaching the target; closest: nearest prefix
-  parameters_dir: vessel_parameters/toy
+  parameters_dir: vessel_parameters/forest
   confine_to_volume: true
   root_grid_cells: [4, 4, 4]
   root_margin_vox: 10
+  root_placement: boundary           # interior: stratified 3D grid; boundary: stratified face cells, pointing inward
+  boundary_margin_vox: 6             # boundary roots: distance from the growth-volume face
+  boundary_cone_deg: 45              # boundary roots: max angle between root direction and inward face normal
+  pad_vox: 32                        # grow in volume_size + 2*pad_vox and keep the centre, so vessels cross the faces
   min_root_spacing_vox: 20
-  min_tree_segments: 5
+  min_tree_segments: 20
   max_trees: 500
   max_failed_roots: 200
   base_seed: 0

@@ -1,0 +1,43 @@
+{
+  "anatomical_context": "Large straight trunk tree: wider root, longer segments, low curvature.",
+  "root_geometry": {
+    "origin_voxel": [
+      125,
+      125,
+      125
+    ],
+    "initial_direction": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "initial_radius": 4.0
+  },
+  "branching_model": {
+    "max_depth": 12,
+    "bifurcation_probability": 0.35,
+    "bifurcation_depth_decay": 0.97,
+    "bifurcation_angle": 30.0,
+    "bifurcation_angle_model": "murray",
+    "bifurcation_angle_jitter": 10.0,
+    "termination_factor": 0.003,
+    "segment_length_vox": {
+      "min": 12,
+      "max": 20
+    },
+    "max_total_segments": 600
+  },
+  "radius_model": {
+    "min_radius_vox": 1.0,
+    "radius_decay_factor": 0.8,
+    "murray_exponent": 3.0,
+    "asymmetry_ratio": {
+      "min": 0.25,
+      "max": 0.85
+    }
+  },
+  "tortuosity_model": {
+    "segment_max_curvature": 2,
+    "collision_jitter_scale": 0.5
+  }
+}

@@ -321,6 +321,35 @@ class VesselBuilder:
                               if not (isinstance(k, int) and k >= n_segments) and k != ("root", tree_id)}
         del self.segments[n_segments:]
 
+    @staticmethod
+    def _boundary_cells(cells):
+        # (axis, side, cell along the first other axis, cell along the second other axis), for all six faces.
+        out = []
+        for axis in range(3):
+            a, b = [i for i in range(3) if i != axis]
+            out += [(axis, side, i, j) for side in (0, 1) for i in range(cells[a]) for j in range(cells[b])]
+        return out
+
+    def _boundary_root(self, cell, size, margin, span, forest_cfg):
+        # Root near a face, pointing inward within a cone around the face normal, so vessels enter the volume.
+        axis, side, i, j = cell
+        a, b = [k for k in range(3) if k != axis]
+        pos = np.zeros(3)
+        offset = float(forest_cfg.get("boundary_margin_vox", margin))
+        pos[axis] = offset if side == 0 else size[axis] - 1 - offset
+        pos[a] = margin + (i + np.random.uniform()) * span[a]
+        pos[b] = margin + (j + np.random.uniform()) * span[b]
+        normal = np.zeros(3)
+        normal[axis] = 1.0 if side == 0 else -1.0
+        cos_max = math.cos(math.radians(float(forest_cfg.get("boundary_cone_deg", 45.0))))
+        cos_t = np.random.uniform(cos_max, 1.0)
+        phi = np.random.uniform(0, 2 * math.pi)
+        u = self._get_random_orthogonal(normal)
+        v = np.cross(normal, u)
+        sin_t = math.sqrt(max(0.0, 1 - cos_t ** 2))
+        direction = cos_t * normal + sin_t * (math.cos(phi) * u + math.sin(phi) * v)
+        return pos, self._normalize(direction)
+
     def grow_forest(self, param_sets, target_length, forest_cfg):
         # Adds trees until their total centerline length reaches target_length, or a tree/failure limit is hit.
         # Roots cycle through a shuffled grid of cells, so any prefix of the trees is spread over the volume.
@@ -328,6 +357,7 @@ class VesselBuilder:
         cells = np.array(forest_cfg["root_grid_cells"])
         margin = float(forest_cfg["root_margin_vox"])
         span = (size - 1 - 2 * margin) / cells
+        boundary = forest_cfg.get("root_placement", "interior") == "boundary"
         cell_queue = []
         failed, attempts, total = 0, 0, 0.0
         while True:
@@ -338,11 +368,14 @@ class VesselBuilder:
             if failed >= forest_cfg["max_failed_roots"]:
                 stop = "max_failed_roots"; break
             if not cell_queue:
-                cell_queue = list(np.ndindex(*cells))
+                cell_queue = self._boundary_cells(cells) if boundary else list(np.ndindex(*cells))
                 random.shuffle(cell_queue)
-            cell = np.array(cell_queue.pop())
-            root_pos = margin + (cell + np.random.uniform(0, 1, 3)) * span
-            root_dir = self._normalize(np.random.normal(size=3))
+            cell = cell_queue.pop()
+            if boundary:
+                root_pos, root_dir = self._boundary_root(cell, size, margin, span, forest_cfg)
+            else:
+                root_pos = margin + (np.array(cell) + np.random.uniform(0, 1, 3)) * span
+                root_dir = self._normalize(np.random.normal(size=3))
             params_file, params = random.choice(param_sets)
             tree_id = attempts
             attempts += 1
@@ -456,11 +489,21 @@ def save_json(path: Path, data):
     with open(path, "w") as f:
         json.dump(data, f, indent=2)
 
+def growth_shape(fc):
+    # Forests grow in the output volume padded by pad_vox on every side, then the centre is kept, so vessels
+    # pass through the faces instead of thinning out near walls they cannot cross.
+    return tuple(int(n) + 2 * int(fc.get("pad_vox", 0)) for n in fc["volume_size"])
+
+def crop_to_output(volume, fc):
+    pad = int(fc.get("pad_vox", 0))
+    return volume[pad:volume.shape[0] - pad, pad:volume.shape[1] - pad, pad:volume.shape[2] - pad] if pad else volume
+
 def forest_targets(fc):
     # Per-preset targets: skeleton voxels per 128^3 from the reference, and the matching graph centerline length
-    # per volume. calibration_factor is graph length per skeleton voxel.
+    # per growth volume. calibration_factor is graph length per skeleton voxel, with the skeleton counted in the
+    # output crop and scaled to the growth volume, so the target density is reached inside the output crop.
     ref = json.loads(Path(fc["reference"]).read_text())["summary"]["skeleton_per_128"]["mean"]
-    blocks = np.prod(np.array(fc["volume_size"], dtype=float) / 128)
+    blocks = np.prod(np.array(growth_shape(fc), dtype=float) / 128)
     factor = fc["calibration_factor"] if fc["calibration_factor"] is not None else 1.0
     return {preset: {"fraction": frac, "skeleton_per_128": frac * ref, "length": frac * ref * blocks * factor}
             for preset, frac in fc["density_fractions"].items()}
@@ -474,7 +517,7 @@ def load_param_sets(parameters_dir):
 def build_forest(index, fc, param_sets, target_length):
     seed = fc["base_seed"] + index
     seed_everything(seed)
-    builder = VesselBuilder(None, tuple(fc["volume_size"]), bool(fc.get("confine_to_volume", True)))
+    builder = VesselBuilder(None, growth_shape(fc), bool(fc.get("confine_to_volume", True)))
     info = builder.grow_forest(param_sets, target_length, fc)
     trees = [{**t, "seed": seed, "graph": builder.canonical_graph(t["tree_id"])} for t in builder.trees]
     return builder, trees, {**info, "seed": seed}
@@ -491,6 +534,7 @@ def forest_worker(job):
     if not np.array_equal(full, builder.volume > 0):
         raise RuntimeError(f"seg_{index:03d}: re-rasterized trees differ from the grown mask "
                            f"({int((full != (builder.volume > 0)).sum())} voxels)")
+    full = crop_to_output(full, fc)
 
     cumulative = np.cumsum([t["length"] for t in trees])
     name = f"seg_{index:03d}"
@@ -502,7 +546,8 @@ def forest_worker(job):
         if fc.get("prefix_rule", "reach") == "closest" and preset != top and k >= 2:
             if abs(cumulative[k - 2] - target["length"]) < abs(cumulative[k - 1] - target["length"]):
                 k -= 1
-        mask = full if k == len(trees) else rasterize_graphs([t["graph"] for t in trees[:k]], builder.volume_size) > 0
+        mask = full if k == len(trees) else crop_to_output(
+            rasterize_graphs([t["graph"] for t in trees[:k]], builder.volume_size) > 0, fc)
         out = Path(output_root) / preset
         np.save(out / "masks" / f"{name}.npy", mask)
         metadata = {
@@ -512,8 +557,11 @@ def forest_worker(job):
             "n_trees_kept": k, "n_trees_grown": len(trees), "failed_roots": info["failed_roots"],
             "root_attempts": info["attempts"], "stop_reason": info["stop_reason"], "seed": info["seed"],
             "prefix_rule": fc.get("prefix_rule", "reach"),
-            "calibration_factor": fc["calibration_factor"], "volume_shape": list(builder.volume_size),
-            "coordinates": "continuous voxel indices (x, y, z) into the mask, i.e. mask[x, y, z]", "units": "voxels",
+            "calibration_factor": fc["calibration_factor"], "volume_shape": list(mask.shape),
+            "growth_shape": list(builder.volume_size), "crop_offset_vox": int(fc.get("pad_vox", 0)),
+            "coordinates": "continuous voxel indices (x, y, z) in the growth volume; the mask is the growth volume "
+                           "cropped by crop_offset_vox on every side, i.e. mask[x - o, y - o, z - o]",
+            "units": "voxels",
         }
         save_json(out / "graphs" / f"{name}_forest.json", {"metadata": metadata, "trees": trees[:k]})
         kept[preset] = k
@@ -567,7 +615,7 @@ def calibrate_forest(cfg, n_volumes):
     with Pool(min(fc["n_workers"], n_volumes)) as pool:
         rows = pool.map(calibration_worker, [(10_000 + i, fc, param_sets, target) for i in range(n_volumes)])
     for length, skel in rows:
-        print(f"  graph length {length:.0f}, skeleton voxels {skel}, ratio {length / skel:.4f}")
+        print(f"  graph length {length:.0f}, skeleton voxels (scaled to growth volume) {skel:.0f}, ratio {length / skel:.4f}")
     factor = sum(r[0] for r in rows) / sum(r[1] for r in rows)
     print(f"calibration_factor = {factor:.4f} (graph length per skeleton voxel, {n_volumes} volumes)")
 
@@ -575,7 +623,9 @@ def calibration_worker(job):
     from measure_density import skeleton_of
     index, fc, param_sets, target = job
     builder, trees, _ = build_forest(index, fc, param_sets, target)
-    return sum(t["length"] for t in trees), int(skeleton_of(builder.volume > 0).sum())
+    crop = crop_to_output(builder.volume > 0, fc)
+    scale = np.prod(builder.volume_size) / crop.size
+    return sum(t["length"] for t in trees), float(skeleton_of(crop).sum() * scale)
 
 
 def main():
