@@ -3,7 +3,7 @@ builder_output_dir: "tmp" # directory of the initial masks generated from 2_vess
 final_patches_dir: "final_vessels" # directory of the final masks generated from 3_extract_patches.py
 
 initial_volume_size: [160, 160, 160]
-masks_per_json: 1 #TODO
+masks_per_json: 3 #TODO
 save_nifti: true # also save vessel_mask.nii.gz next to vessel_mask.npy
 
 final_patch_size: 96
