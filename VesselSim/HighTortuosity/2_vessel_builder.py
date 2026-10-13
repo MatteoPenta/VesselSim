@@ -1,4 +1,5 @@
 import os
+import argparse
 import json
 import re
 from pathlib import Path
@@ -13,8 +14,10 @@ def load_config(config_path):
         return yaml.safe_load(f)
 
 class VesselBuilder:
-    def __init__(self, config, volume_size):
+    def __init__(self, config, volume_size, confine_to_volume=False):
         self.config = config
+        self.confine_to_volume = confine_to_volume
+        self._blocked_by_border = False
         self.volume_size = volume_size
         self.volume = np.zeros(volume_size, dtype=np.uint8)
         self.root = config['root_geometry']
@@ -53,7 +56,16 @@ class VesselBuilder:
                    (grid_z - center_local[2]) ** 2)
         return dist_sq <= radius ** 2
 
+    def _inside_volume(self, pos, radius):
+        # The whole sphere of the given radius around pos lies inside the volume.
+        hi = np.array(self.volume_size) - 1 - radius
+        return bool(np.all(pos >= radius) and np.all(pos <= hi))
+
     def _check_collision_volumetric(self, curr_pos, next_pos, radius):
+        self._blocked_by_border = False
+        if self.confine_to_volume and not self._inside_volume(next_pos, radius):
+            self._blocked_by_border = True
+            return True
         r = int(math.ceil(radius))
         x_min = max(0, int(min(curr_pos[0], next_pos[0]) - r))
         x_max = min(self.volume_size[0], int(max(curr_pos[0], next_pos[0]) + r + 1))
@@ -90,6 +102,36 @@ class VesselBuilder:
         dist_sq = (grid_x - x) ** 2 + (grid_y - y) ** 2 + (grid_z - z) ** 2
         mask = dist_sq <= radius ** 2
         self.volume[x_min:x_max, y_min:y_max, z_min:z_max][mask] = 1
+
+    def _split(self, parent_radius):
+        # Returns ((radius_a, angle_a), (radius_b, angle_b)) for the two daughters, thicker first.
+        # Without murray_exponent, both daughters get parent_radius * radius_decay_factor (original behaviour).
+        gamma = self.radius.get("murray_exponent")
+        if gamma is None:
+            r = parent_radius * self.radius["radius_decay_factor"]
+            radii = (r, r)
+        else:
+            # Murray's law r_p^g = r_a^g + r_b^g with asymmetry ratio alpha = r_b / r_a in (0, 1].
+            ratio = self.radius.get("asymmetry_ratio", {"min": 1.0, "max": 1.0})
+            # Smallest alpha that keeps the thin daughter at or above min_radius_vox, when possible.
+            # The range is raised above asymmetry_ratio if needed, so a feasible split never loses its thin daughter.
+            m = float(self.radius["min_radius_vox"]) / parent_radius
+            alpha_floor = m / (1 - m ** gamma) ** (1 / gamma) if m < 2 ** (-1 / gamma) else 1.0
+            alpha = random.uniform(max(ratio["min"], alpha_floor), max(ratio["max"], alpha_floor))
+            r_a = parent_radius / (1 + alpha ** gamma) ** (1 / gamma)
+            radii = (r_a, alpha * r_a)
+
+        if self.branching.get("bifurcation_angle_model", "fixed") == "murray":
+            # Murray's optimal branching angles: the thinner daughter deviates more from the parent direction.
+            r0, ra, rb = parent_radius, radii[0], radii[1]
+            cos_a = (r0 ** 4 + ra ** 4 - rb ** 4) / (2 * r0 ** 2 * ra ** 2)
+            cos_b = (r0 ** 4 + rb ** 4 - ra ** 4) / (2 * r0 ** 2 * rb ** 2)
+            angles = [math.degrees(math.acos(max(-1.0, min(1.0, c)))) for c in (cos_a, cos_b)]
+            jitter = float(self.branching.get("bifurcation_angle_jitter", 0.0))
+            angles = [max(0.0, a + random.uniform(-jitter, jitter)) for a in angles]
+        else:
+            angles = [self.branching["bifurcation_angle"]] * 2
+        return (radii[0], angles[0]), (radii[1], angles[1])
 
     def _drop(self, parent_id, reason):
         self._drop_reasons.setdefault(parent_id, []).append(reason)
@@ -171,7 +213,7 @@ class VesselBuilder:
                     break
 
             if not segment_succeeded:
-                self._drop(parent_id, "segment_blocked")
+                self._drop(parent_id, "border_blocked" if self._blocked_by_border else "segment_blocked")
                 continue
             self.total_segments += 1
 
@@ -191,24 +233,16 @@ class VesselBuilder:
 
             if random.random() < bif_prob:
                 self._bifurcated.add(seg_id)
-                angle = self.branching['bifurcation_angle']
                 rot_axis = self._get_random_orthogonal(curr_dir)
+                (rad_a, angle_a), (rad_b, angle_b) = self._split(curr_radius)
 
-                dir_a = self._rotate_vector(curr_dir, rot_axis, angle)
-                dir_b = self._rotate_vector(curr_dir, rot_axis, -angle)
-                new_rad = curr_radius * self.radius['radius_decay_factor']
-
-                pos_a = curr_pos + dir_a
-                pos_b = curr_pos + dir_b
-                if not self._check_collision_volumetric(curr_pos, pos_a, new_rad):
-                    queue.append((curr_pos, dir_a, new_rad, depth + 1, seg_id))
-                else:
-                    self._drop(seg_id, "bifurcation_blocked")
-                if not self._check_collision_volumetric(curr_pos, pos_b, new_rad):
-                    queue.append((curr_pos, dir_b, new_rad, depth + 1, seg_id))
-                else:
-                    self._drop(seg_id, "bifurcation_blocked")
-
+                # Both daughters lie in the same plane, on opposite sides of the parent direction.
+                for new_dir, new_rad in ((self._rotate_vector(curr_dir, rot_axis, angle_a), rad_a),
+                                         (self._rotate_vector(curr_dir, rot_axis, -angle_b), rad_b)):
+                    if not self._check_collision_volumetric(curr_pos, curr_pos + new_dir, new_rad):
+                        queue.append((curr_pos, new_dir, new_rad, depth + 1, seg_id))
+                    else:
+                        self._drop(seg_id, "border_blocked" if self._blocked_by_border else "bifurcation_blocked")
 
             else:
                 term_factor = self.branching['termination_factor']
@@ -219,7 +253,7 @@ class VesselBuilder:
                     if not self._check_collision_volumetric(curr_pos, pos_next, curr_radius):
                         queue.append((curr_pos, curr_dir, curr_radius, depth, seg_id))
                     else:
-                        self._drop(seg_id, "continuation_blocked")
+                        self._drop(seg_id, "border_blocked" if self._blocked_by_border else "continuation_blocked")
                 else:
                     self._drop(seg_id, "termination_probability")
 
@@ -308,13 +342,19 @@ def save_json(path: Path, data):
         json.dump(data, f, indent=2)
 
 def main():
-    cfg = load_config("generation_config.yaml")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--config", type=str, default="generation_config.yaml", help="Generation config, default is generation_config.yaml")
+    args = parser.parse_args()
+    cfg = load_config(args.config)
 
     volume_size = tuple(cfg["initial_volume_size"])
     parameters_dir = Path(cfg["parameters_dir"])
     output_dir = Path(cfg["builder_output_dir"])
     masks_per_json = int(cfg["masks_per_json"])
     save_nifti = bool(cfg.get("save_nifti", False))
+    confine_to_volume = bool(cfg.get("confine_to_volume", False))
+    # Each sample gets its own seed, drawn from a master generator; a null seed gives a non-reproducible run.
+    master_rng = random.Random(cfg.get("seed"))
 
     json_paths = sorted(parameters_dir.glob("*.json"))
     if len(json_paths) == 0:
@@ -332,14 +372,20 @@ def main():
         params = load_json(json_path)
 
         for _ in range(masks_per_json):
+            seed = master_rng.randrange(2 ** 32)
             try:
-                builder = VesselBuilder(params, volume_size)
+                random.seed(seed)
+                np.random.seed(seed)
+                builder = VesselBuilder(params, volume_size, confine_to_volume)
                 mask = builder.build()
                 attempt = next_attempt_for_base(output_dir, base)
                 sample_dir = output_dir / f"{base}_{attempt:02d}"
                 sample_dir.mkdir()
                 metadata = {
                     "parameters_file": json_path.name,
+                    "parameters": params,
+                    "seed": seed,
+                    "confine_to_volume": confine_to_volume,
                     "volume_shape": list(volume_size),
                     "coordinates": "continuous voxel indices (x, y, z) into vessel_mask.npy, i.e. vessel_mask[x, y, z]",
                     "units": "voxels",
@@ -352,7 +398,6 @@ def main():
             except Exception as e:
                 print(f"  Failed for {json_path.name}: {e}")
     print("Done.")
-
 
 if __name__ == "__main__":
     main()
