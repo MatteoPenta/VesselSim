@@ -1,0 +1,43 @@
+{
+  "anatomical_context": "Dense arborization: higher branching probability and shorter segments.",
+  "root_geometry": {
+    "origin_voxel": [
+      80,
+      80,
+      12
+    ],
+    "initial_direction": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "initial_radius": 3.2
+  },
+  "branching_model": {
+    "max_depth": 14,
+    "bifurcation_probability": 0.65,
+    "bifurcation_depth_decay": 0.98,
+    "bifurcation_angle": 30.0,
+    "bifurcation_angle_model": "murray",
+    "bifurcation_angle_jitter": 8.0,
+    "termination_factor": 0.02,
+    "segment_length_vox": {
+      "min": 4,
+      "max": 8
+    },
+    "max_total_segments": 1500
+  },
+  "radius_model": {
+    "min_radius_vox": 0.5,
+    "radius_decay_factor": 0.8,
+    "murray_exponent": 3.0,
+    "asymmetry_ratio": {
+      "min": 0.35,
+      "max": 1.0
+    }
+  },
+  "tortuosity_model": {
+    "segment_max_curvature": 10,
+    "collision_jitter_scale": 0.4
+  }
+}

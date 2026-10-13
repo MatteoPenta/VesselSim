@@ -1,0 +1,11 @@
+# Generation config for the vascular-graph toy experiment (clean latent graphs G*).
+# Run with: uv run python 2_vessel_builder.py --config generation_config_toy.yaml
+parameters_dir: "vessel_parameters/toy" # directory of the toy parameter files
+builder_output_dir: "toy_samples" # directory of the generated masks and graphs
+
+initial_volume_size: [160, 160, 160]
+masks_per_json: 15
+save_nifti: false
+
+confine_to_volume: true # keep every centerline point and vessel sphere inside the volume, so graph and mask stay aligned
+seed: 0 # master seed; each sample's own seed is stored in its metadata
