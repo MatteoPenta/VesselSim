@@ -22,8 +22,9 @@ The additions below are all in `VesselSim/HighTortuosity/` and are opt-in, so th
 - **Graph export**: each builder mask is saved with its vessel tree (`raw_tree.json`, `canonical_graph.json`), with a
   browser viewer (`5_visualize_graph.py`, [GRAPH_VIEWER.md](VesselSim/HighTortuosity/GRAPH_VIEWER.md)).
 - **Builder options**: asymmetric Murray bifurcations, volume confinement and per-sample seeds.
-- **Forest mode**: multi-tree 250³ volumes filled to target centerline densities, with nested density presets, for
-  vesselFM's vessel-overlay augmentation.
+- **Forest mode**: multi-tree 250³ volumes filled to target centerline densities, with nested density presets, for the
+  vessel-overlay augmentation of the anatomy-conditioned domain randomization pipeline
+  ([code](https://github.com/erc-caravel/anatomical_vessel_dr)).
 - **Measurement tools**: `measure_density.py`, `measure_morphology.py`, `verify_overlay_volumes.py` and `6_graph_stats.py`.
 
 See the [high tortuosity README](VesselSim/HighTortuosity/README.md) for usage.

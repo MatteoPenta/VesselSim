@@ -1,4 +1,5 @@
-"""Centerline density of binary vessel volumes, as seen by vesselFM's RandVesselOverlayd.
+"""Centerline density of binary vessel volumes, as seen by RandVesselOverlayd, the
+vessel-overlay augmentation of the anatomy-conditioned DR pipeline (github.com/erc-caravel/anatomical_vessel_dr).
 
 For each .npy mask: vessel voxel fraction, skeleton voxels per 128^3, connected components, radius percentiles
 (EDT sampled on the skeleton) and the skeleton-voxel distribution over random 128^3 crops placed like

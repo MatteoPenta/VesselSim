@@ -11,7 +11,8 @@ patch_extraction_attempts: 50
 
 
 
-# Forest mode: several trees per volume, filled to target centerline densities for vesselFM's RandVesselOverlayd.
+# Forest mode: several trees per volume, filled to target centerline densities for the RandVesselOverlayd
+# augmentation of the anatomy-conditioned DR pipeline (github.com/erc-caravel/anatomical_vessel_dr).
 # Run with forest.enabled: true (or a copy of this file): python 2_vessel_builder.py [--calibrate N]
 forest:
   enabled: false
