@@ -1,0 +1,35 @@
+defaults:
+  - data: augmented_cbDice
+  - trainer: default_recon_cbdice
+  - model: dyn_unet_recon
+  - hydra: default
+  - _self_
+
+# data
+input_size: [96, 96, 96]
+image_channels: 1
+num_classes: 1
+
+# training
+seed: 404
+lr: 0.0001
+batch_size: 8
+eval_path: "path to validation data" #TODO
+path_to_chkpt: null
+devices: [0]
+
+# logging
+run_name: training_vesselSim #TODO
+chkpt_folder: "checkpoints output folder" #TODO
+offline: True
+
+# dataloader
+dataloader:
+  _target_: "torch.utils.data.DataLoader"
+  _partial_: True
+  num_workers: 4
+  prefetch_factor: 2
+  batch_size: ${batch_size}
+  pin_memory: True
+  persistent_workers: False
+  shuffle: True

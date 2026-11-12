@@ -1,0 +1,20 @@
+# Local datasets, checkpoints and outputs
+data/
+outputs/
+my_checkpoints/
+*.ckpt
+*.pth
+*.pt
+*.npy
+*.nii
+*.nii.gz
+# Python and experiment artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+wandb/
+lightning_logs/
+*.log
+.env
+.env.*

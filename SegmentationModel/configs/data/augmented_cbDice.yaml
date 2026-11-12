@@ -1,0 +1,52 @@
+defaults:
+  - _self_
+
+MyDataset:
+  path: "path to training data" #TODO
+  sample_prop: 1.0  # Use 100% of this dataset
+  filter_dataset_IDs: null
+  file_format: "npy"
+  cbdice_cache_dir: "path to cbdice cache directory"
+
+  # The code requires 'transforms' to be defined for 'train' mode
+  transforms:
+    train:
+      - EnsureChannelFirstd:
+          keys: [ "Image", "Mask" ]
+          channel_dim: "no_channel"
+      - RandGaussianSmoothd:
+          keys: [ "Image" ]
+          prob: 0.2
+          sigma_x: [ 0.0, 0.5 ]
+          sigma_y: [ 0.0, 0.5 ]
+          sigma_z: [ 0.0, 0.5 ]
+      - RandGaussianNoised:
+          keys: [ "Image" ]
+          prob: 0.2
+          std: 0.01
+          mean: 0.3
+      - RandHistogramShiftd:
+          keys: [ "Image" ]
+          prob: 0.3
+          num_control_points: [ 5, 10 ]
+      - CenterSpatialCropd:
+          keys: [ "Image", "Mask" ]
+          roi_size: ${input_size}
+      - SpatialPadd:
+          keys: [ "Image", "Mask" ]
+          spatial_size: ${input_size}
+      - ToTensord:
+          keys: [ "Image", "Mask" ]
+    val:
+      - EnsureChannelFirstd:
+          keys: [ "Image", "Mask" ]
+          channel_dim: "no_channel"
+      - ScaleIntensityd:
+          keys: [ "Image" ]
+          minv: 0
+          maxv: 1
+      - CenterSpatialCropd:
+          keys: [ "Image", "Mask" ]
+          roi_size: ${input_size}
+      - ToTensord:
+          keys: [ Image, Mask ]
