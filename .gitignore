@@ -8,3 +8,6 @@ __pycache__/
 tmp/
 toy_samples/
 overlay_volumes
+.claude/
+core-*
+audit
