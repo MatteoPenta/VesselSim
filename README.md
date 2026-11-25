@@ -1,7 +1,8 @@
 
 ![VesselSim Banner](static/images/banner.png)
 
-**TL;DR** *This project page provides the code to generate VesselSim's high tortuosity synthetic blood vessels and skull-injected samples.* 
+**TL;DR:** *This repository provides the code for VesselSim's synthetic vessel generation framework and segmentation model training and inference.* 
+
 
 ---
 **VesselSim** is  a two-stage framework for universal 3D blood vessel segmentation that eliminates the need for 
@@ -14,6 +15,7 @@ clinical scans without prior domain knowledge.
 
 For more details, please refer to our [manuscript](https://arxiv.org/abs/2605.26277), our 
 [publicly available data](https://osf.io/8n5wu/overview), and the full [project page](https://healthx-lab.github.io/VesselSim).
+Pretrained model weights are available on [Hugging Face](https://huggingface.co/e-rain/VesselSim).
 
 # Additions in this fork
 This fork builds on VesselSim up to upstream commit `a873e7e`. The vessel generator, its parameters and the published
@@ -52,6 +54,20 @@ Each segmentation mask is then paired with a corresponding synthetic angiography
 rendering pipeline introduced in [VesselFM](https://github.com/bwittmann/vesselFM): _D<sub>drand</sub>_. The high tortuosity code generates 
 the volumes in the correct format to be easily run with VesselFM. Please refer to their code and instructions to generate 
 the angiographic image volumes.
+
+
+# Segmentation Model
+
+The VesselSim segmentation model is a 3D DynUNet trained on synthetic angiographic images and their corresponding vessel 
+masks. Training combines DiceCE, cbDice, and a masked L1 reconstruction objective.
+
+The architecture includes a shared encoder, a segmentation decoder, and an auxiliary reconstruction decoder used for 
+self-supervised test-time adaptation (TTA).
+
+Full explanation and code for training and inference are available [here](SegmentationModel/ReadMe.md).
+
+
+
 
 # Citing VesselSim
 The VesselSim paper has been accepted into the MICCAI 2026 conference. The peer reviewed, finalized copy will be available

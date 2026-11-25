@@ -1,0 +1,75 @@
+defaults:
+  - hydra: default
+  - model: dyn_unet_recon
+  - _self_
+
+# i/o
+image_path: "path to dataset images"  #TODO
+image_file_ending: nii.gz
+output_folder: "path for output segmentations" # TODO
+file_app: ""
+
+mask_path: "path to dataset masks" #TODO
+round_to: 2
+
+# model & ckpt
+device: cuda:0
+ckpt_path: "path to trained model .ckpt" #TODO
+
+# TTA
+tta_recon:
+  apply: true   #apply TTA to inference? #TODO
+  steps: 1              # number of adaptation rounds per volume
+  num_patches: 24       # N random patches per step
+  patch_size: [96, 96, 96]   # or [64,64,64] if full volume is too big
+  lr: 1e-5
+  dropout_prob: 0.8
+  seed: 404
+  holes: 32
+  spatial_size: [1, 2, 2, 2]
+  max_spatial_size: [1, 16, 16, 16]
+  fill_value: -1
+
+
+# sliding window inferer batch:16
+batch_size: 8
+patch_size: [96, 96, 96]
+overlap: 0.5
+mode: "constant"
+sigma_scale: 0.125
+padding_mode: "constant"
+
+# eval & reproducibility
+seed: 404
+
+# standard pre-processing transforms
+transforms_config:
+  - EnsureChannelFirst:
+      channel_dim: "no_channel"
+  - ScaleIntensityRangePercentiles:
+      lower: 1
+      upper: 99
+      b_min: 0
+      b_max: 1
+      clip: true
+  - ToTensor:
+      device: null
+
+# test time augmentation
+tta:
+  scales: [1] #[0.5, 1, 1.5]
+  invert: false
+  invert_mean_thresh: 0.5
+  equalize_hist: false
+  hist_bins: 100
+
+# post-processing
+post:
+  apply: true
+  small_objects_min_size: 500
+  small_objects_connectivity: 3
+
+# merging
+merging:
+  threshold: 0.5
+  max: false
