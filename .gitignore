@@ -11,3 +11,4 @@ overlay_volumes
 .claude/
 core-*
 audit
+slurms/
